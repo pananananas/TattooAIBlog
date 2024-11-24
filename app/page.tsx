@@ -1,5 +1,5 @@
 import { BlogPosts } from "app/components/posts";
-
+import { Component } from "./components/area-chart";
 export default function Page() {
   return (
     <section>
@@ -16,6 +16,7 @@ export default function Page() {
       <div className="my-8">
         <BlogPosts />
       </div>
+      <Component />
     </section>
   );
 }
