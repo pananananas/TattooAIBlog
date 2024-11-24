@@ -2,7 +2,9 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import { highlight } from 'sugar-high'
+import CardStack from "./card-stack"
 import React from 'react'
+import { images_folder_1 } from '../lib/imageData'
 
 function Table({ data }) {
   let headers = data.headers.map((header, index) => (
@@ -85,7 +87,6 @@ function createHeading(level) {
 
   return Heading
 }
-
 let components = {
   h1: createHeading(1),
   h2: createHeading(2),
@@ -97,13 +98,17 @@ let components = {
   a: CustomLink,
   code: Code,
   Table,
+  CardStack,
 }
 
 export function CustomMDX(props) {
+  const { source, ...rest } = props;
   return (
     <MDXRemote
-      {...props}
-      components={{ ...components, ...(props.components || {}) }}
+      {...rest}
+      source={source}
+      components={components}
+      scope={{ images_folder_1 }}
     />
   )
 }

@@ -1,22 +1,23 @@
 "use client";
 import React, { useEffect, useRef, useCallback, useState } from "react";
 import Image from "next/image";
+import { images_folder_1 } from "../lib/imageData";
 
 interface ImageData {
   id: number;
   name: string;
   url: string;
-  key: string;
-  userId: string;
-  updatedAt: Date | null;
 }
 
 interface CardStackProps {
-  images: ImageData[];
+  images?: ImageData[];
   id: string;
 }
 
-const CardStack: React.FC<CardStackProps> = ({ images, id }) => {
+const CardStack: React.FC<CardStackProps> = ({ images = [], id }) => {
+  
+  images = images_folder_1
+  
   const parentRef = useRef<HTMLDivElement>(null);
   const scrollableContainerRef = useRef<HTMLDivElement>(null);
 
@@ -362,7 +363,7 @@ const CardStack: React.FC<CardStackProps> = ({ images, id }) => {
   };
 
   useEffect(() => {
-    if (scrollableContainerRef.current) {
+    if (scrollableContainerRef.current && images.length > 0) {
       const scrollWidth = scrollableContainerRef.current.scrollWidth;
       const clientWidth = scrollableContainerRef.current.clientWidth;
       const scrollLeft =
