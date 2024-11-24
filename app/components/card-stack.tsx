@@ -375,7 +375,7 @@ const CardStack: React.FC<CardStackProps> = ({ images, id }) => {
   }, [activeIndex, images.length]);
 
   return (
-    <div ref={parentRef} className="relative h-[14rem] w-[12rem]">
+    <div ref={parentRef} className="relative h-[18rem] w-[14rem]">
       {(!hasScrolled || arrowClicked) && ( 
         <>
           {activeIndex > 0 && (
@@ -439,7 +439,7 @@ const CardStack: React.FC<CardStackProps> = ({ images, id }) => {
           {images.map((image, index) => (
             <div
               key={image.id}
-              className={`visible-card-${id} transform-style-preserve-3d pointer-events-none absolute left-1/2 top-1/2 flex h-[12rem] w-[9rem] cursor-ew-resize items-center justify-center shadow-lg`}
+              className={`visible-card-${id} transform-style-preserve-3d pointer-events-none absolute left-1/2 top-1/2 flex h-[16rem] w-[12rem] cursor-ew-resize items-center justify-center shadow-lg`}
             >
               <Image
                 src={image.url}

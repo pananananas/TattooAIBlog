@@ -66,7 +66,9 @@ export default function Page() {
       <div className="my-8">
         <BlogPosts />
       </div>
+      <div className="flex justify-center my-8">
       <CardStack images={images_folder_1} id="stack1" />
+      </div>
     </section>
   )
 }
