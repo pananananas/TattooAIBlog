@@ -6,11 +6,9 @@ export default function Page() {
         Tattoo AI
       </h1>
       <p className="mb-4">
-        {`I'm a Vim enthusiast and tab advocate, finding unmatched efficiency in
-        Vim's keystroke commands and tabs' flexibility for personal viewing
-        preferences. This extends to my support for static typing, where its
-        early error detection ensures cleaner code, and my preference for dark
-        mode, which eases long coding sessions by reducing eye strain.`}
+        {`We are a team, building an app that uses AI to help you visualize your tattoo ideas on your body.
+        We are currently in the early stages of development and are looking for feedback from the tattoo community.
+        `}
       </p>
       <h1 className="text-xl font-semibold pt-4" >
         Blog posts
