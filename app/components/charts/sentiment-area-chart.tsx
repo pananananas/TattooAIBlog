@@ -9,13 +9,13 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "./ui/card";
+} from "../ui/card";
 import {
   ChartConfig,
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
-} from "./ui/chart";
+} from "../ui/chart";
 
 // Use the aggregated chartData
 const chartData = [
@@ -81,7 +81,6 @@ const chartConfig: ChartConfig = {
     },
     illustrative: {
       label: "Illustrative",
-
       color: "hsl(var(--chart-1))",
     },
     minimalist: {
@@ -123,7 +122,7 @@ const chartConfig: ChartConfig = {
                   bottom: 0,
                 }}
               >
-                <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                <CartesianGrid strokeDasharray="3 3" vertical={false}/>
                 <XAxis
                   dataKey="month"
                   tickLine={false}

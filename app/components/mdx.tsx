@@ -5,8 +5,9 @@ import { highlight } from 'sugar-high'
 import CardStack from "./card-stack"
 import React from 'react'
 import { images_folder_1 } from '../lib/imageData'
-import { AreaChartComponent } from './area-chart'
-import SentimentAreaChart from './sentiment-area-chart'
+import { AreaChartComponent } from './charts/area-chart'
+import SentimentAreaChart from './charts/sentiment-area-chart'
+import  TopicAreaChart  from './charts/topic-area-chart'
 
 function Table({ data }) {
   let headers = data.headers.map((header, index) => (
@@ -103,6 +104,7 @@ let components = {
   CardStack,
   AreaChartComponent,
   SentimentAreaChart,
+  TopicAreaChart,
 }
 
 export function CustomMDX(props) {
