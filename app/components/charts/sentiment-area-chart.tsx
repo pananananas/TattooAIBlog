@@ -19,6 +19,7 @@ import {
 } from "../ui/card";
 import { ChartConfig, ChartContainer, ChartTooltipContent } from "../ui/chart";
 import { sentimentChartData } from "../../lib/chartData.js";
+import { TrendingDown } from "lucide-react";
 
 const chartConfig: ChartConfig = {
   blackwork: {
@@ -71,9 +72,9 @@ export default function StyleSentimentAreaChart() {
 
   return (
     <Card>
-      <CardHeader className="flex flex-row items-center justify-between">
+      <CardHeader className="flex flex-row items-start justify-between">
         <div>
-          <CardTitle>Sentiment of tattoo styles</CardTitle>
+          <CardTitle>Sentiment</CardTitle>
           <CardDescription className="pt-2">
             Showing sentiment for different tattoo styles
           </CardDescription>
@@ -152,18 +153,18 @@ export default function StyleSentimentAreaChart() {
           </ResponsiveContainer>
         </ChartContainer>
       </CardContent>
-      {/* <CardFooter>
+      <CardFooter>
         <div className="flex w-full items-start gap-2 text-sm">
           <div className="grid gap-2">
             <div className="flex items-center gap-2 font-medium leading-none">
-              Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
+              Sentiment for most styles trend down in last year<TrendingDown className="h-4 w-4" />
             </div>
             <div className="flex items-center gap-2 leading-none text-muted-foreground">
-              2014Q2 - 2024Q11
+              2014 - 2024
             </div>
           </div>
         </div>
-      </CardFooter> */}
+      </CardFooter>
     </Card>
   );
 }

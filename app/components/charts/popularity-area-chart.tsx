@@ -137,7 +137,7 @@ export default function TattooStylesAreaChart() {
               Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
             </div>
             <div className="flex items-center gap-2 leading-none text-muted-foreground">
-              2014Q2 - 2024Q11
+              2014 - 2024
             </div>
           </div>
         </div>
