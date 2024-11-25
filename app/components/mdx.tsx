@@ -6,8 +6,9 @@ import CardStack from "./card-stack"
 import React from 'react'
 import { images_folder_1 } from '../lib/imageData'
 import { AreaChartComponent } from './charts/area-chart'
-import SentimentAreaChart from './charts/sentiment-area-chart'
-import  TopicAreaChart  from './charts/topic-area-chart'
+import TattooStylesAreaChart from './charts/popularity-area-chart'
+import TopicAreaChart  from './charts/topic-area-chart'
+import StyleSentimentAreaChart from './charts/sentiment-area-chart'
 
 function Table({ data }) {
   let headers = data.headers.map((header, index) => (
@@ -103,7 +104,8 @@ let components = {
   Table,
   CardStack,
   AreaChartComponent,
-  SentimentAreaChart,
+  TattooStylesAreaChart,
+  StyleSentimentAreaChart,
   TopicAreaChart,
 }
 

@@ -8,7 +8,6 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
-
 import {
   Card,
   CardContent,
@@ -23,46 +22,61 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "../ui/chart";
-
-import { topicChartData } from "../../lib/chartData.js";
+import { popularityChartData } from "../../lib/chartData.js";
 
 const chartConfig: ChartConfig = {
-  kotki_w_chwilach_relaksu: {
-    label: "🐈 Kotki w chwilach relaksu",
-    color: "hsl(var(--chart-4))",
+  anime: {
+    label: "Anime",
+    color: "hsl(210, 100%, 50%)",
   },
-  motyle_z_rozłożonymi_skrzydłami: {
-    label: "🦋 Motyle ze skrzydłami",
-    color:  "hsl(210, 100%, 50%)",
+  blackwork: {
+    label: "Blackwork",
+    color: "hsl(0, 0%, 0%)",
   },
-  pejzażyste_kwiaty_i_liście: {
-    label: "🌸 Pejzażyste kwiaty i liście",
-    color: "hsl(330, 100%, 50%)",
+  calligraphy: {
+    label: "Calligraphy",
+    color: "hsl(120, 100%, 25%)",
   },
-  nieustraszone_tygrysy: {
-    label: "🐅 Nieustraszone tygrysy",
+  cybersigilism: {
+    label: "Cybersigilism",
+    color: "hsl(300, 100%, 40%)",
+  },
+  illustrative: {
+    label: "Illustrative",
     color: "hsl(var(--chart-1))",
   },
-  wilki_wyjące_w_dziczy: {
-    label: "🐺 Wilki wyjące w dziczy",
-    color: "hsl(120, 100%, 15%)",
+  minimalist: {
+    label: "Minimalist",
+    color: "hsl(180, 100%, 30%)",
+  },
+  realism: {
+    label: "Realism",
+    color: "hsl(var(--chart-2))",
+  },
+  traditional: {
+    label: "Traditional",
+    color: "hsl(330, 100%, 40%)",
+  },
+  trash_polka: {
+    label: "trash_polka",
+    color: "hsl(330, 100%, 40%)",
   },
 };
 
-export default function TopicAreaChart() {
+export default function TattooStylesAreaChart() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Tattoo Content Trends</CardTitle>
+        <CardTitle>Tattoo Styles Trends</CardTitle>
         <CardDescription>
-          Showing total counts of tattoo topics by category
+          Showing total counts for various tattoo styles per quarter
         </CardDescription>
       </CardHeader>
       <CardContent>
         <ChartContainer config={chartConfig}>
           <ResponsiveContainer width="100%" height={400}>
             <AreaChart
-              data={topicChartData}
+              data={popularityChartData}
               margin={{
                 top: 20,
                 right: 30,
@@ -78,11 +92,7 @@ export default function TopicAreaChart() {
                 tickMargin={8}
                 tickFormatter={(value) => value}
               />
-              <Tooltip
-                content={<ChartTooltipContent indicator="line" />}
-                cursor={false}
-                defaultIndex={5}
-              />
+              <Tooltip content={<ChartTooltipContent />} />
               <defs>
                 {Object.entries(chartConfig).map(([key, config]) => (
                   <linearGradient
