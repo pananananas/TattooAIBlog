@@ -53,7 +53,7 @@ export default function TopicAreaChart() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Tattoo Content Trends</CardTitle>
+        <CardTitle>Tattoo Topic Trends</CardTitle>
         <CardDescription>
           Showing total counts of tattoo topics by category
         </CardDescription>
@@ -81,7 +81,7 @@ export default function TopicAreaChart() {
               <Tooltip
                 content={<ChartTooltipContent indicator="line" />}
                 cursor={false}
-                defaultIndex={5}
+                // defaultIndex={5}
               />
               <defs>
                 {Object.entries(chartConfig).map(([key, config]) => (

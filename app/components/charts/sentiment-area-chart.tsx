@@ -100,7 +100,7 @@ export default function StyleSentimentAreaChart() {
               margin={{
                 top: 20,
                 right: 30,
-                left: 0,
+                left: -20,
                 bottom: 0,
               }}
             >
