@@ -12,10 +12,10 @@ export default function Page() {
         early error detection ensures cleaner code, and my preference for dark
         mode, which eases long coding sessions by reducing eye strain.`}
       </p>
-      <h2 >
+      <h1 className="text-xl font-semibold pt-4" >
         Blog posts
-      </h2>
-      <div className="my-8">
+      </h1>
+      <div className="mb-8 mt-3">
         <BlogPosts />
       </div>
     </section>
