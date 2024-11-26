@@ -1,4 +1,27 @@
 @import 'tailwindcss';
+@tailwind utilities;
+
+.mdx-content {
+  @apply max-w-full overflow-hidden;
+}
+
+.mdx-content img {
+  @apply max-w-full h-auto;
+}
+
+.mdx-content pre {
+  @apply overflow-x-auto;
+}
+
+.mdx-content table {
+  @apply w-full overflow-x-auto block;
+}
+
+.mdx-content th,
+.mdx-content td {
+  @apply p-2 border;
+}
+
 
 ::selection {
   background-color: #47a3f3;

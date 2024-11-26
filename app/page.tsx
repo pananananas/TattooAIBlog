@@ -1,4 +1,6 @@
 import { BlogPosts } from "app/components/posts";
+import Image from "next/image";
+import { Suspense } from "react";
 export default function Page() {
   return (
     <section>
@@ -14,13 +16,17 @@ export default function Page() {
         {`This is out first visual concept of an appliation.`}
       </p>
       <div className="flex justify-center">
-        <img
-          src="https://utfs.io/f/xNYugo9hq5N2neV5qe6UgADqyGdL1X6hk0NtsSvQxjcfe5ri"
-          alt="Tattoo AI application"
-          className="w-1/2"
-        />
+        <Suspense fallback={<div>Loading...</div>}>
+          <Image
+            src="https://utfs.io/a/oxjj5brc17/xNYugo9hq5N2neV5qe6UgADqyGdL1X6hk0NtsSvQxjcfe5ri"
+            alt="Tattoo AI application"
+            className="w-1/2"
+            width={450}
+            height={450}
+          />
+        </Suspense>
       </div>
-      
+
       <h1 className="text-xl font-semibold pt-4">Blog posts</h1>
       <div className="mb-8 mt-3">
         <BlogPosts />

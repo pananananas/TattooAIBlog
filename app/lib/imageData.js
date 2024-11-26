@@ -114,13 +114,13 @@ export const images_folder_2 = [
     tattoo_style: "anime",
     post_id: "4i5yk3",
   },
-  {
-    id: 530384283,
-    url: "https://utfs.io/a/oxjj5brc17/xNYugo9hq5N2rnXBoqzZB07WVJCgPf1kqO8imyHRE5Qpr6ND",
-    name: "8rrz4r_row38871_img0.jpg",
-    description: "black futuristic circuit board design on the forearm",
-    colour: "black",
-    tattoo_style: "cybersigilism",
-    post_id: "8rrz4r",
-  },
+  // {
+  //   id: 530384283,
+  //   url: "https://utfs.io/a/oxjj5brc17/xNYugo9hq5N2rnXBoqzZB07WVJCgPf1kqO8imyHRE5Qpr6ND",
+  //   name: "8rrz4r_row38871_img0.jpg",
+  //   description: "black futuristic circuit board design on the forearm",
+  //   colour: "black",
+  //   tattoo_style: "cybersigilism",
+  //   post_id: "8rrz4r",
+  // },
 ];

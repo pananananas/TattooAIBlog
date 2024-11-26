@@ -23,12 +23,14 @@ function Table({ data }) {
   ));
 
   return (
-    <table>
-      <thead>
-        <tr>{headers}</tr>
-      </thead>
-      <tbody>{rows}</tbody>
-    </table>
+    <div className="overflow-x-auto">
+      <table className="w-full">
+        <thead>
+          <tr>{headers}</tr>
+        </thead>
+        <tbody>{rows}</tbody>
+      </table>
+    </div>
   );
 }
 
@@ -51,7 +53,7 @@ function CustomLink(props) {
 }
 
 function RoundedImage(props) {
-  return <Image alt={props.alt} className="rounded-lg" {...props} />;
+  return <Image alt={props.alt} className="rounded-lg max-w-full h-auto" {...props} />;
 }
 
 function Code({ children, ...props }) {
@@ -63,11 +65,11 @@ function slugify(str) {
   return str
     .toString()
     .toLowerCase()
-    .trim() // Remove whitespace from both ends of a string
-    .replace(/\s+/g, "-") // Replace spaces with -
-    .replace(/&/g, "-and-") // Replace & with 'and'
-    .replace(/[^\w\-]+/g, "") // Remove all non-word characters except for -
-    .replace(/\-\-+/g, "-"); // Replace multiple - with single -
+    .trim()
+    .replace(/\s+/g, "-")
+    .replace(/&/g, "-and-")
+    .replace(/[^\w\-]+/g, "")
+    .replace(/\-\-+/g, "-");
 }
 
 function createHeading(level) {
@@ -91,6 +93,7 @@ function createHeading(level) {
 
   return Heading;
 }
+
 let components = {
   h1: createHeading(1),
   h2: createHeading(2),
@@ -112,11 +115,13 @@ let components = {
 export function CustomMDX(props) {
   const { source, ...rest } = props;
   return (
-    <MDXRemote
-      {...rest}
-      source={source}
-      components={components}
-      scope={{ images_folder_1 }}
-    />
+    <div className="mdx-content">
+      <MDXRemote
+        {...rest}
+        source={source}
+        components={components}
+        scope={{ images_folder_1 }}
+      />
+    </div>
   );
 }

@@ -381,55 +381,59 @@ const CardStack: React.FC<CardStackProps> = ({ images = [], id }) => {
   }, [activeIndex, images.length]);
 
   return (
-    <div ref={parentRef} className="relative h-[18rem] w-[10rem]">
-      {/* {(!hasScrolled || arrowClicked) && (
+    <div ref={parentRef} className="relative h-[18rem] w-[16rem]">
+      {isDesktop && (
         <>
-          {activeIndex > 0 && (
-            <button
-              onClick={() => handleArrowClick("left")}
-              className="absolute left-[-15px] top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 transform items-center justify-center rounded-full bg-black bg-opacity-40 text-white transition-all hover:scale-105 hover:bg-opacity-50 active:translate-x-[-4px]"
-              aria-label="Previous image"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                className="h-6 w-6"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M15 19l-7-7 7-7"
-                />
-              </svg>
-            </button>
-          )}
-          {activeIndex < images.length - 1 && (
-            <button
-              onClick={() => handleArrowClick("right")}
-              className="absolute right-[-15px] top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 transform items-center justify-center rounded-full bg-black bg-opacity-40 text-white transition-all hover:scale-105 hover:bg-opacity-50 active:translate-x-[4px]"
-              aria-label="Next image"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                className="h-6 w-6"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M9 5l7 7-7 7"
-                />
-              </svg>
-            </button>
+          {(!hasScrolled || arrowClicked) && (
+            <>
+              {activeIndex > 0 && (
+                <button
+                  onClick={() => handleArrowClick("left")}
+                  className="absolute left-[-15px] top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 transform items-center justify-center rounded-full bg-black/80 text-white transition-all hover:scale-105 hover:bg-opacity-50 active:translate-x-[-4px]"
+                  aria-label="Previous image"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    className="h-6 w-6"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M15 19l-7-7 7-7"
+                    />
+                  </svg>
+                </button>
+              )}
+              {activeIndex < images.length - 1 && (
+                <button
+                  onClick={() => handleArrowClick("right")}
+                  className="absolute right-[-15px] top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 transform items-center justify-center rounded-full bg-black/80 text-white transition-all hover:scale-105 hover:bg-opacity-50 active:translate-x-[4px]"
+                  aria-label="Next image"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    className="h-6 w-6"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                </button>
+              )}
+            </>
           )}
         </>
-      )} */}
+      )}
       <div
         ref={scrollableContainerRef}
         className={`scrollbar-hide flex h-full w-full snap-x snap-mandatory overflow-y-hidden overflow-x-scroll`}
@@ -454,7 +458,7 @@ const CardStack: React.FC<CardStackProps> = ({ images = [], id }) => {
                 height={480}
                 className="h-full w-full rounded-xl object-cover"
               />
-              <Badge  className="absolute top-2 left-2">
+              <Badge className="absolute top-2 left-2">
                 {image.tattoo_style}
               </Badge>
             </div>
