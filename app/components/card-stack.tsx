@@ -2,6 +2,7 @@
 import React, { useEffect, useRef, useCallback, useState } from "react";
 import Image from "next/image";
 import { images_folder_2 } from "../lib/imageData";
+import { Badge } from "./ui/badge";
 
 interface ImageData {
   id: number;
@@ -19,9 +20,8 @@ interface CardStackProps {
 }
 
 const CardStack: React.FC<CardStackProps> = ({ images = [], id }) => {
-  
-  images = images_folder_2
-  
+  images = images_folder_2;
+
   const parentRef = useRef<HTMLDivElement>(null);
   const scrollableContainerRef = useRef<HTMLDivElement>(null);
 
@@ -54,12 +54,12 @@ const CardStack: React.FC<CardStackProps> = ({ images = [], id }) => {
       scrollableContainer: HTMLElement,
       id: string,
       onActiveIndexChange: (index: number) => void,
-      setHasScrolled: (hasScrolled: boolean) => void,
+      setHasScrolled: (hasScrolled: boolean) => void
     ) {
       this.scrollableContainer = scrollableContainer;
       this.id = id;
       this.cardCount = scrollableContainer.querySelectorAll(
-        `.scrollable-card-${id}`,
+        `.scrollable-card-${id}`
       ).length;
       this.onActiveIndexChange = onActiveIndexChange;
       this.setHasScrolled = setHasScrolled;
@@ -74,11 +74,11 @@ const CardStack: React.FC<CardStackProps> = ({ images = [], id }) => {
         card.update(this.globalScrollProgress, this.activeIndex);
       });
       this.handleActiveIndex();
-    }  
+    }
 
     private createVisibleCards() {
       const children = this.scrollableContainer.querySelectorAll(
-        `.visible-card-${this.id}`,
+        `.visible-card-${this.id}`
       );
       for (let i = 0; i < children.length; i++) {
         this.visibleCards.push(
@@ -87,8 +87,8 @@ const CardStack: React.FC<CardStackProps> = ({ images = [], id }) => {
             this.globalScrollProgress,
             this.activeIndex,
             i,
-            this.id,
-          ),
+            this.id
+          )
         );
       }
     }
@@ -101,7 +101,6 @@ const CardStack: React.FC<CardStackProps> = ({ images = [], id }) => {
       this.handleActiveIndex();
       this.update();
     };
-  
 
     private handleActiveIndex() {
       const relativeScrollPerCard = 1 / (this.cardCount - 1);
@@ -139,7 +138,7 @@ const CardStack: React.FC<CardStackProps> = ({ images = [], id }) => {
 
     public cleanup() {
       this.scrollableContainer.removeEventListener("scroll", this.handleScroll);
-    }  
+    }
   }
 
   class VisibleCard {
@@ -156,10 +155,10 @@ const CardStack: React.FC<CardStackProps> = ({ images = [], id }) => {
       globalScrollProgress: number,
       activeIndex: number,
       index: number,
-      id: string,
+      id: string
     ) {
       this.element = document.querySelector(
-        `.visible-card-${id}:nth-child(${index + 1})`,
+        `.visible-card-${id}:nth-child(${index + 1})`
       ) as HTMLElement;
       this.cardCount = cardCount;
       this.globalScrollProgress = globalScrollProgress;
@@ -182,18 +181,18 @@ const CardStack: React.FC<CardStackProps> = ({ images = [], id }) => {
       const activeCardScrollProgress =
         this.globalScrollProgress / relativeScrollPerCard - this.activeIndex;
       const absoluteActiveCardScrollProgress = Math.abs(
-        activeCardScrollProgress,
+        activeCardScrollProgress
       );
 
       const translateX = this.calculateTranslateX(
         cardScrollProgress,
-        absoluteCardScrollProgress,
+        absoluteCardScrollProgress
       );
       const translateZ = this.calculateTranslateZ(absoluteCardScrollProgress);
       const rotateY = this.calculateRotateY(
         absoluteActiveCardScrollProgress,
         absoluteCardScrollProgress,
-        cardScrollProgress,
+        cardScrollProgress
       );
       const rotateZ = this.calculateRotateZ(cardScrollProgress);
       const scale = this.calculateScale(absoluteCardScrollProgress);
@@ -207,13 +206,13 @@ const CardStack: React.FC<CardStackProps> = ({ images = [], id }) => {
         rotateZ,
         scale,
         zIndex,
-        opacity,
+        opacity
       );
     }
 
     private calculateTranslateX(
       cardScrollProgress: number,
-      absoluteCardScrollProgress: number,
+      absoluteCardScrollProgress: number
     ): number {
       let translateX = 0;
 
@@ -245,7 +244,7 @@ const CardStack: React.FC<CardStackProps> = ({ images = [], id }) => {
     private calculateRotateY(
       absoluteActiveCardScrollProgress: number,
       absoluteCardScrollProgress: number,
-      cardScrollProgress: number,
+      cardScrollProgress: number
     ): number {
       let rotateY = 0;
 
@@ -326,9 +325,11 @@ const CardStack: React.FC<CardStackProps> = ({ images = [], id }) => {
       rotateZ: number,
       scale: number,
       zIndex: number,
-      opacity: number,
+      opacity: number
     ) {
-      const transform = `translateX(${translateX - 50}%) translateY(-50%) translateZ(${translateZ}px) rotateY(${rotateY}deg) rotateZ(${rotateZ}deg) scale(${scale})`;
+      const transform = `translateX(${
+        translateX - 50
+      }%) translateY(-50%) translateZ(${translateZ}px) rotateY(${rotateY}deg) rotateZ(${rotateZ}deg) scale(${scale})`;
       this.element.style.transform = transform;
       this.element.style.zIndex = zIndex.toString();
       this.element.style.opacity = opacity.toString();
@@ -381,7 +382,7 @@ const CardStack: React.FC<CardStackProps> = ({ images = [], id }) => {
 
   return (
     <div ref={parentRef} className="relative h-[18rem] w-[16rem]">
-      {(!hasScrolled || arrowClicked) && ( 
+      {(!hasScrolled || arrowClicked) && (
         <>
           {activeIndex > 0 && (
             <button
@@ -453,6 +454,9 @@ const CardStack: React.FC<CardStackProps> = ({ images = [], id }) => {
                 height={480}
                 className="h-full w-full rounded-xl object-cover"
               />
+              <Badge  className="absolute top-2 left-2">
+                {image.tattoo_style}
+              </Badge>
             </div>
           ))}
         </div>
