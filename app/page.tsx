@@ -13,7 +13,7 @@ export default function Page() {
         `}
       </p>
       <p className="mb-4">
-        {`This is out first visual concept of an appliation.`}
+        {`This is our first visual concept of an appliation.`}
       </p>
       <div className="flex justify-center">
         <Suspense fallback={<div>Loading...</div>}>
