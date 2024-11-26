@@ -1,12 +1,16 @@
 "use client";
 import React, { useEffect, useRef, useCallback, useState } from "react";
 import Image from "next/image";
-import { images_folder_1 } from "../lib/imageData";
+import { images_folder_2 } from "../lib/imageData";
 
 interface ImageData {
   id: number;
   name: string;
   url: string;
+  description: string;
+  colour: string;
+  tattoo_style: string;
+  post_id: string;
 }
 
 interface CardStackProps {
@@ -16,7 +20,7 @@ interface CardStackProps {
 
 const CardStack: React.FC<CardStackProps> = ({ images = [], id }) => {
   
-  images = images_folder_1
+  images = images_folder_2
   
   const parentRef = useRef<HTMLDivElement>(null);
   const scrollableContainerRef = useRef<HTMLDivElement>(null);
