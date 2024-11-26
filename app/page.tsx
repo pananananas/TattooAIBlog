@@ -4,7 +4,10 @@ import { Suspense } from "react";
 export default function Page() {
   return (
     <section>
-      <h1 className="mb-8 text-3xl font-semibold tracking-tighter font-mono">
+      <h1
+        className="mb-8 text-3xl font-bold tracking-tighter"
+        style={{ fontFamily: "var(--font-geist-mono)" }}
+      >
         Tattoo AI
       </h1>
       <p className="mb-4">

@@ -31,7 +31,7 @@ const chartConfig: ChartConfig = {
   },
   blackwork: {
     label: "Blackwork",
-    color: "hsl(0, 0%, 0%)",
+    color: "hsl(0, 0%, 30%)",
   },
   calligraphy: {
     label: "Calligraphy",
