@@ -449,14 +449,14 @@ const CardStack: React.FC<CardStackProps> = ({ images = [], id }) => {
           {images.map((image, index) => (
             <div
               key={image.id}
-              className={`visible-card-${id} transform-style-preserve-3d pointer-events-none absolute left-1/2 top-1/2 flex h-[16rem] w-[12rem] cursor-ew-resize items-center justify-center shadow-lg`}
+              className={`visible-card-${id} transform-style-preserve-3d pointer-events-none absolute left-1/2 top-1/2 flex h-[16rem] w-[12rem] cursor-ew-resize items-center justify-center shadow-lg object-contain`}
             >
               <Image
                 src={image.url}
                 alt={image.name}
                 width={480}
                 height={480}
-                className="h-full w-full rounded-xl object-cover"
+                className="h-full w-full rounded-xl"
               />
               <Badge className="absolute top-2 left-2">
                 {image.tattoo_style}
