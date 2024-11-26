@@ -14,6 +14,7 @@ import {
   FormMessage,
   FormControl,
 } from "@/app/components/ui/form";
+import { usePostHog } from "posthog-js/react";
 
 const formSchema = z.object({
   name: z
@@ -31,12 +32,11 @@ type FormValues = z.infer<typeof formSchema>;
 
 const GOOGLE_SCRIPT_URL = process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL;
 
-
-
-
 export default function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
-  
+
+  const posthog = usePostHog();
+
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -44,24 +44,30 @@ export default function ContactPage() {
       email: "",
     },
   });
-  
+
   if (!GOOGLE_SCRIPT_URL) {
-    throw new Error('Google Script URL is not defined in environment variables');
+    throw new Error(
+      "Google Script URL is not defined in environment variables"
+    );
   }
 
   const onSubmit = async (data: FormValues) => {
     setIsSubmitting(true);
 
     try {
+      posthog.capture(`subscribe_begin`, {
+        name: data.name,
+        email: data.email,
+      });
+
       const response = await fetch(GOOGLE_SCRIPT_URL, {
-        method: 'POST',
-        mode: 'no-cors', // Important for Google Apps Script
+        method: "POST",
+        mode: "no-cors", // Important for Google Apps Script
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(data),
       });
-
 
       // Show success message
       toast("Thank you for subscribing!");
@@ -120,7 +126,10 @@ export default function ContactPage() {
             )}
           />
 
-          <Button className="w-full bg-emerald-700 text-gray-200" disabled={isSubmitting}>
+          <Button
+            className="w-full bg-emerald-700 text-gray-200"
+            disabled={isSubmitting}
+          >
             {isSubmitting ? "Submitting..." : "Subscribe for Updates"}
           </Button>
         </form>
