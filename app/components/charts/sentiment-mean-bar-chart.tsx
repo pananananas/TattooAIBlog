@@ -38,7 +38,7 @@ export default function SentimentMeanBarChart() {
     <Card>
       <CardHeader>
         <CardTitle> 
-          Mean Sentiment by Tattoo Style
+          Mean Sentiment by Style
         </CardTitle>
       </CardHeader>
       <CardContent>
