@@ -7,6 +7,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { CSPostHogProvider } from "./_analytics/providers";
 import Footer from "./components/footer";
 import { baseUrl } from "./sitemap";
+import { Toaster } from "@/app/components/ui/sonner";
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
@@ -60,6 +61,7 @@ export default function RootLayout({
             <Footer />
             <SpeedInsights />
           </main>
+          <Toaster />
         </body>
       </CSPostHogProvider>
     </html>
