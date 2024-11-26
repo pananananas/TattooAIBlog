@@ -382,7 +382,7 @@ const CardStack: React.FC<CardStackProps> = ({ images = [], id }) => {
 
   return (
     <div ref={parentRef} className="relative h-[18rem] w-[16rem]">
-      {(!hasScrolled || arrowClicked) && (
+      {/* {(!hasScrolled || arrowClicked) && (
         <>
           {activeIndex > 0 && (
             <button
@@ -429,7 +429,7 @@ const CardStack: React.FC<CardStackProps> = ({ images = [], id }) => {
             </button>
           )}
         </>
-      )}
+      )} */}
       <div
         ref={scrollableContainerRef}
         className={`scrollbar-hide flex h-full w-full snap-x snap-mandatory overflow-y-hidden overflow-x-scroll`}

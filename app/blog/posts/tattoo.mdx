@@ -4,45 +4,83 @@ publishedAt: '2024-11-24'
 summary: 'Tazttoos have been around for centuries, but the styles and techniques used have evolved over time. From traditional to modern, here are some of the most popular tattoo styles today.'
 ---
 
-# 🚧 Under construction 🚧
 
-## Trends in Tattoo Styles
-{/* <AreaChartComponent /> */}
-<TattooStylesAreaChart />
-<TopicAreaChart/>
-<StyleSentimentAreaChart/>
-<SentimentMeanBarChart/>
+Tattoos have been a form of self-expression for thousands of years, serving as a powerful medium for individuals to tell their stories, display their beliefs, or simply showcase their creativity. In the past decade, we've witnessed a remarkable surge in the popularity and societal acceptance of tattoos.
+
+In our project, we decided to dive deeper into this fascinating phenomenon. Our goal was to explore which tattoo styles are currently trending, understand people's perceptions of tattoos, and uncover the most common designs that individuals choose to have inked. Join us as we unravel the stories behind this timeless art form and its modern-day evolution.
+
+
+# Method
+
+To conduct a thorough analysis of tattoos, we employed a multimodal approach using the Qwen2VL model for both description generation, style and color identification from the collected dataset. This powerful model enabled us to extract detailed descriptions and accurately categorize tattoo styles and colors present in the images. 
+
+To ensure the accuracy of our findings, we validated the model’s results on a carefully curated validation set consisting of 100 annotated images. Our performance metrics were impressive, with an F1 score of 0.82 for style classification, 0.88 for color identification, and an 88% accuracy for extracting keywords from image descriptions.
+
+In addition to the image-based analysis, we also explored the textual descriptions. Our focus was on three key aspects:
+
+- Popularity of Styles – We employed statistical methods to analyze how frequently different styles appeared over time.
+
+- Sentiment of Styles – Using the RoBERTa model, we assessed the sentiment surrounding various tattoo styles, capturing positive or negative opinions expressed by the community.
+
+- Tattoo Themes – To classify and explore the themes of tattoos, we used BERTopic for topic modeling, allowing us to uncover the most common subjects and motifs featured in tattoo designs.
+
+<img src="https://utfs.io/f/xNYugo9hq5N2GWUL6o4G9ioa2bnI8wXQKkdztyuLNAhxfZrm"/>
+
+This combination of advanced models and techniques allowed us to gain deep insights into tattoo trends, public perception, and the thematic diversity of this art form.
+
+
+# Data Collection
+
+To gain a deeper understanding of tattoo trends and perceptions, we collected a massive dataset from four of the most popular tattoo-related subreddits: r/Tattoo, r/Tattoos, r/TattooDesigns, and r/TattooAdvice. This dataset spans over ten years and includes an impressive 55,000 posts, which provided us with approximately 80,000 images and 3.5 million comments.
 
 <div className="flex justify-center py-12">
-    <CardStack id="card-stack-tattoo-1"/>
+  <CardStack id="card-stack-tattoo-1"/>
 </div>
 
-## Efficiency and Speed
+For our analysis, we focused on nine prominent tattoo styles, as identified in industry catalogs, and examined how frequently they appeared in the images shared by users. This wealth of data offers a unique glimpse into the evolving world of tattoos, showcasing trends, preferences, and the dynamic relationship between art and its admirers.
 
-At the heart of Vim's philosophy is the idea of minimizing keystrokes to achieve maximum efficiency.
 
-Unlike other text editors where the mouse is often relied upon for navigation and text manipulation, Vim's keyboard-centric design allows developers to perform virtually all coding tasks without leaving the home row. This not only speeds up coding but also reduces the risk of repetitive strain injuries.
+# Tattoo styles popularity
 
-## Highly Customizable
+Tattoo art has been steadily gaining popularity over the years. 
 
-Vim can be extensively customized to suit any developer's preferences and workflow. With a vibrant ecosystem of plugins and a robust scripting language, users can tailor the editor to their specific needs, whether it's programming in Python, writing in Markdown, or managing projects.
+<TattooStylesAreaChart />
+The chart reveals that the Illustrative style has consistently been the most popular, maintaining a dominant position throughout the observed period.
 
-This level of customization ensures that Vim remains relevant and highly functional for a wide range of programming tasks and languages.
+In 2022, an interesting shift occurred when the Blackwork style surpassed Traditional, becoming the third most frequently discussed tattoo style online. Other styles like Realism and Minimalist are also showing gradual growth in popularity.
 
-## Ubiquity and Portability
+It's worth noting the decline in the number of posts during the COVID-19 pandemic, likely due to restrictions and reduced tattoo appointments, but the numbers have rebounded strongly since then.
 
-Vim is virtually everywhere. It's available on all major platforms, and because it's lightweight and terminal-based, it can be used on remote servers through SSH, making it an indispensable tool for sysadmins and developers working in a cloud-based environment.
+## Sentiment analysis
 
-The ability to use the same editor across different systems without a graphical interface is a significant advantage for those who need to maintain a consistent workflow across multiple environments.
+Using the RoBERTa model, we conducted a sentiment analysis of user comments to evaluate the perception of various tattoo styles. This analysis provided valuable insights into how different styles are discussed and received within the community over time.
 
-## Vibrant Community
+<StyleSentimentAreaChart/>
 
-Despite—or perhaps because of—its learning curve, Vim has cultivated a passionate and active community. Online forums, dedicated websites, and plugins abound, offering support, advice, and improvements.
+Calligraphy tattoos had the lowest sentiment scores, suggesting they may be more polarizing or subject to critical opinions.
 
-This community not only helps newcomers climb the steep learning curve but also continually contributes to Vim's evolution, ensuring it remains adaptable and up-to-date with the latest programming trends and technologies.
+Trash Polka, known for its bold and unconventional aesthetic, displayed the highest variability in sentiment, reflecting a diverse range of opinions.
 
-## Conclusion
+<SentimentMeanBarChart/>
 
-Vim is not just a text editor; it's a way of approaching coding with efficiency and thoughtfulness. Its steep learning curve is a small price to pay for the speed, flexibility, and control it offers.
+The most popular tattoo styles, such as minimalistic and traditional designs, received the most consistent and stable feedback, indicating their broad acceptance within the community.
 
-For those willing to invest the time to master its commands, Vim proves to be an invaluable tool that enhances productivity and enjoyment in coding. In an age of ever-changing development tools, the continued popularity of Vim is a testament to its enduring value and utility.
+Our analysis also showed a concerning trend: the overall sentiment in comments has been declining over time, potentially pointing to increased scrutiny or shifting expectations in the tattoo space. Below, we present both temporal sentiment distributions and a density plot illustrating the variability in sentiment across styles, highlighting the evolving dynamics of community discussions.
+
+
+# Topic modeling
+Topic modeling offers a powerful way to analyze trends and uncover hidden patterns in large datasets. In our study, the goal was to identify the key themes present in tattoo designs and analyze their popularity over time. Leveraging the BERTopic model, we conducted an in-depth analysis of visual descriptions generated by the Qwen2VL model. This method allowed us to discover, classify, and explore the monthly dynamics of different tattoo motifs.
+
+<TopicAreaChart/>
+
+One of the most prominent findings was the dominance of the cat motif 🐈, which experienced a significant rise in popularity starting in 2021. This theme has continued to hold the top spot in recent years. Similarly, the butterfly motif 🦋 saw a dramatic surge, climbing from the least popular theme in 2021 to becoming the second most favored design.
+
+In addition to animals, other recurring popular themes included flowers and leaves 🌸, landscapes, and anime characters. These results not only highlight the diverse interests of tattoo enthusiasts but also reflect broader cultural and aesthetic shifts.
+
+# Conclusion
+
+Tattoos have become an increasingly popular form of self-expression over the years, evolving alongside cultural and societal trends. Our comprehensive analysis reveals fascinating insights into the tattoo world, from the enduring dominance of the Illustrative style to the rise of Blackwork designs surpassing Traditional tattoos in 2022. Sentiment analysis highlighted both polarizing styles, like Calligraphy and Trash Polka, and the broad acceptance of minimalistic and traditional tattoos.
+
+Thematic exploration uncovered shifting trends in design preferences, such as the growing popularity of animal motifs like cats and butterflies, as well as nature-inspired elements like flowers and landscapes. These changes mirror broader cultural and aesthetic movements, emphasizing the dynamic relationship between tattoos and their admirers.
+
+Despite the growing popularity, we observed a decline in the tone of comments over time, hinting at changing community dynamics and perhaps higher scrutiny. Overall, the data underscores the rich diversity of tattoo art and its ever-evolving nature, making it an enduring medium for creativity and personal storytelling.

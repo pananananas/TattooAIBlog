@@ -15,12 +15,12 @@ import {
 } from "../ui/chart";
 
 const chartData = [
+  { tattoo_style: "Anime", mean_sentiment: 0.34, std_dev: 0.11 },
+  { tattoo_style: "Illustrative", mean_sentiment: 0.339, std_dev: 0.074 },
   { tattoo_style: "Traditional", mean_sentiment: 0.322, std_dev: 0.075 },
   { tattoo_style: "Realism", mean_sentiment: 0.32, std_dev: 0.069 },
-  { tattoo_style: "Illustrative", mean_sentiment: 0.339, std_dev: 0.074 },
-  { tattoo_style: "Anime", mean_sentiment: 0.34, std_dev: 0.11 },
-  { tattoo_style: "Blackwork", mean_sentiment: 0.241, std_dev: 0.081 },
   { tattoo_style: "Cybersigilism", mean_sentiment: 0.236, std_dev: 0.114 },
+  { tattoo_style: "Blackwork", mean_sentiment: 0.241, std_dev: 0.081 },
   { tattoo_style: "Trash polka", mean_sentiment: 0.169, std_dev: 0.148 },
   { tattoo_style: "Minimalist", mean_sentiment: 0.115, std_dev: 0.118 },
   { tattoo_style: "Calligraphy", mean_sentiment: 0.077, std_dev: 0.125 },
@@ -37,10 +37,9 @@ export default function SentimentMeanBarChart() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Tattoo Styles Sentiment Analysis</CardTitle>
-        <CardDescription>
-          Showing mean sentiment and standard deviation for various tattoo styles
-        </CardDescription>
+        <CardTitle> 
+          Mean Sentiment by Tattoo Style
+        </CardTitle>
       </CardHeader>
       <CardContent>
         <ChartContainer config={chartConfig}>
@@ -49,9 +48,9 @@ export default function SentimentMeanBarChart() {
               data={chartData}
               margin={{
                 top: 20,
-                right: 30,
+                right: 20,
                 left: -10,
-                bottom: 100,
+                bottom: 45,
               }}
             >
               <CartesianGrid strokeDasharray="3 3" vertical={false} />

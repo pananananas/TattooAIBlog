@@ -33,7 +33,7 @@ const chartConfig: ChartConfig = {
   },
   motyle_z_rozłożonymi_skrzydłami: {
     label: "🦋 Motyle ze skrzydłami",
-    color:  "hsl(210, 100%, 50%)",
+    color: "hsl(210, 100%, 50%)",
   },
   pejzażyste_kwiaty_i_liście: {
     label: "🌸 Pejzażyste kwiaty i liście",
@@ -54,9 +54,6 @@ export default function TopicAreaChart() {
     <Card>
       <CardHeader>
         <CardTitle>Tattoo Topic Trends</CardTitle>
-        <CardDescription>
-          Showing total counts of tattoo topics by category
-        </CardDescription>
       </CardHeader>
       <CardContent>
         <ChartContainer config={chartConfig}>
@@ -65,8 +62,8 @@ export default function TopicAreaChart() {
               data={topicChartData}
               margin={{
                 top: 20,
-                right: 30,
-                left: 0,
+                right: 10,
+                left: 10,
                 bottom: 0,
               }}
             >
@@ -122,12 +119,12 @@ export default function TopicAreaChart() {
       </CardContent>
       <CardFooter>
         <div className="flex w-full items-start gap-2 text-sm">
-          <div className="grid gap-2">
+          <div className="flex flex-row justify-between w-full">
             <div className="flex items-center gap-2 font-medium leading-none">
-              Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
+              Trending up year by year <TrendingUp className="h-4 w-4" />
             </div>
             <div className="flex items-center gap-2 leading-none text-muted-foreground">
-              2014 - 2024
+              2015 - 2024
             </div>
           </div>
         </div>

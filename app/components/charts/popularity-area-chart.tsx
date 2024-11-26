@@ -68,9 +68,6 @@ export default function TattooStylesAreaChart() {
     <Card>
       <CardHeader>
         <CardTitle>Tattoo Styles Trends</CardTitle>
-        <CardDescription>
-          Showing total counts for various tattoo styles per quarter
-        </CardDescription>
       </CardHeader>
       <CardContent>
         <ChartContainer config={chartConfig}>
@@ -79,8 +76,8 @@ export default function TattooStylesAreaChart() {
               data={popularityChartData}
               margin={{
                 top: 20,
-                right: 30,
-                left: 0,
+                right: 10,
+                left: 10,
                 bottom: 0,
               }}
             >
@@ -92,7 +89,7 @@ export default function TattooStylesAreaChart() {
                 tickMargin={8}
                 tickFormatter={(value) => value}
               />
-              <Tooltip content={<ChartTooltipContent />} />
+              <Tooltip content={<ChartTooltipContent  />} />
               <defs>
                 {Object.entries(chartConfig).map(([key, config]) => (
                   <linearGradient
@@ -132,12 +129,12 @@ export default function TattooStylesAreaChart() {
       </CardContent>
       <CardFooter>
         <div className="flex w-full items-start gap-2 text-sm">
-          <div className="grid gap-2">
+          <div className="flex flex-row justify-between w-full">
             <div className="flex items-center gap-2 font-medium leading-none">
-              Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
+              Trending up year by year <TrendingUp className="h-4 w-4" />
             </div>
             <div className="flex items-center gap-2 leading-none text-muted-foreground">
-              2014 - 2024
+              2015 - 2024
             </div>
           </div>
         </div>
