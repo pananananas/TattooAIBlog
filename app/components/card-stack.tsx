@@ -381,7 +381,7 @@ const CardStack: React.FC<CardStackProps> = ({ images = [], id }) => {
   }, [activeIndex, images.length]);
 
   return (
-    <div ref={parentRef} className="relative h-[18rem] w-[16rem]">
+    <div ref={parentRef} className="relative h-[18rem] w-[12rem]">
       {/* {(!hasScrolled || arrowClicked) && (
         <>
           {activeIndex > 0 && (
