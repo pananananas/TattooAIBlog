@@ -24,7 +24,7 @@ import {
   ChartTooltipContent,
 } from "../ui/chart";
 
-import { topicChartData } from "../../lib/chartData.js";
+import { topicChartData } from "../../lib/chartData";
 
 const chartConfig: ChartConfig = {
   kotki_w_chwilach_relaksu: {

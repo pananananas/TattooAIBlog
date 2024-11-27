@@ -18,7 +18,7 @@ import {
   CardTitle,
 } from "../ui/card";
 import { ChartConfig, ChartContainer, ChartTooltipContent } from "../ui/chart";
-import { sentimentChartData } from "../../lib/chartData.js";
+import { sentimentChartData } from "../../lib/chartData";
 import { TrendingDown } from "lucide-react";
 
 const chartConfig: ChartConfig = {

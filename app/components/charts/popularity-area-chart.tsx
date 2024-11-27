@@ -22,7 +22,7 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "../ui/chart";
-import { popularityChartData } from "../../lib/chartData.js";
+import { popularityChartData } from "../../lib/chartData";
 
 const chartConfig: ChartConfig = {
   anime: {
