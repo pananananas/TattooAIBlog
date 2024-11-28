@@ -450,15 +450,15 @@ const CardStack: React.FC<CardStackProps> = ({ images = [], id, displayLabels })
           {images.map((image, index) => (
             <div
               key={image.id}
-              className={`visible-card-${id} transform-style-preserve-3d pointer-events-none absolute left-1/2 top-1/2 flex h-full w-full cursor-ew-resize items-center justify-center shadow-lg`}
+              className={`visible-card-${id} transform-style-preserve-3d pointer-events-none absolute left-1/2 top-1/2 flex h-full w-full cursor-ew-resize items-center justify-center `}
             >
-              <div className="relative h-[16rem] w-[12rem] rounded-xl overflow-hidden">
+              <div className="relative h-[16rem] w-[12rem] rounded-xl overflow-hidden shadow-xl">
                 <Image
                   src={image.url}
                   alt={image.name}
                   fill
                   className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 16rem"
+                  sizes="(max-width: 768px) 100vw, 16rem "
                 />
                 {displayLabels && (
                   <Badge className="absolute top-2 left-2 z-10">
