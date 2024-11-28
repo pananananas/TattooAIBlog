@@ -435,7 +435,7 @@ const CardStack: React.FC<CardStackProps> = ({ images = [], id, displayLabels })
           )}
         </>
       )}
-      <div
+       <div
         ref={scrollableContainerRef}
         className={`scrollbar-hide flex h-full w-full snap-x snap-mandatory overflow-y-hidden overflow-x-scroll`}
       >
@@ -450,21 +450,22 @@ const CardStack: React.FC<CardStackProps> = ({ images = [], id, displayLabels })
           {images.map((image, index) => (
             <div
               key={image.id}
-              className={`visible-card-${id} transform-style-preserve-3d pointer-events-none absolute left-1/2 top-1/2 flex h-[16rem] w-[12rem] cursor-ew-resize items-center justify-center shadow-lg object-contain`}
+              className={`visible-card-${id} transform-style-preserve-3d pointer-events-none absolute left-1/2 top-1/2 flex h-full w-full cursor-ew-resize items-center justify-center shadow-lg`}
             >
-              <Image
-                src={image.url}
-                alt={image.name}
-                width={480}
-                height={480}
-                className="h-full w-full rounded-xl"
-              />
-              {/* if display labels */}
-              {displayLabels && (
-                <Badge className="absolute top-2 left-2">
-                  {image.tattoo_style}
-                </Badge>
-              )}
+              <div className="relative h-[16rem] w-[12rem] rounded-xl overflow-hidden">
+                <Image
+                  src={image.url}
+                  alt={image.name}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 16rem"
+                />
+                {displayLabels && (
+                  <Badge className="absolute top-2 left-2 z-10">
+                    {image.tattoo_style}
+                  </Badge>
+                )}
+              </div>
             </div>
           ))}
         </div>
