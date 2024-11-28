@@ -17,9 +17,10 @@ interface ImageData {
 interface CardStackProps {
   images?: ImageData[];
   id: string;
+  displayLabels: boolean;
 }
 
-const CardStack: React.FC<CardStackProps> = ({ images = [], id }) => {
+const CardStack: React.FC<CardStackProps> = ({ images = [], id, displayLabels }) => {
   images = images_folder_2;
 
   const parentRef = useRef<HTMLDivElement>(null);
@@ -458,9 +459,12 @@ const CardStack: React.FC<CardStackProps> = ({ images = [], id }) => {
                 height={480}
                 className="h-full w-full rounded-xl"
               />
-              <Badge className="absolute top-2 left-2">
-                {image.tattoo_style}
-              </Badge>
+              {/* if display labels */}
+              {displayLabels && (
+                <Badge className="absolute top-2 left-2">
+                  {image.tattoo_style}
+                </Badge>
+              )}
             </div>
           ))}
         </div>

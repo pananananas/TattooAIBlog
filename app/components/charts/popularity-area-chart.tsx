@@ -67,7 +67,10 @@ export default function TattooStylesAreaChart() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Tattoo Styles Trends</CardTitle>
+        <CardTitle className="text-lg">Trends in Tattoo Styles</CardTitle>
+        <CardDescription>
+          Popularity of tattoo styles over the years. Y axis represents the number of posts in a given month.
+        </CardDescription>
       </CardHeader>
       <CardContent>
         <ChartContainer config={chartConfig}>
@@ -75,7 +78,7 @@ export default function TattooStylesAreaChart() {
             <AreaChart
               data={popularityChartData}
               margin={{
-                top: 20,
+                top: 0,
                 right: 10,
                 left: 10,
                 bottom: 0,
@@ -89,7 +92,7 @@ export default function TattooStylesAreaChart() {
                 tickMargin={8}
                 tickFormatter={(value) => value}
               />
-              <Tooltip content={<ChartTooltipContent  />} />
+              <Tooltip content={<ChartTooltipContent />} />
               <defs>
                 {Object.entries(chartConfig).map(([key, config]) => (
                   <linearGradient

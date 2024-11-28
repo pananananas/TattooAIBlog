@@ -37,9 +37,10 @@ export default function SentimentMeanBarChart() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle> 
-          Mean Sentiment by Style
-        </CardTitle>
+      <CardTitle className="text-lg">Mean Sentiment by Style </CardTitle>
+        <CardDescription>
+          Mean sentiment and standard deviation by tattoo style. Sentiment is calculated as the average sentiment of all comments in a given style.
+        </CardDescription>
       </CardHeader>
       <CardContent>
         <ChartContainer config={chartConfig}>

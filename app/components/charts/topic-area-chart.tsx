@@ -27,6 +27,10 @@ import {
 import { topicChartData } from "../../lib/chartData";
 
 const chartConfig: ChartConfig = {
+  wilki_wyjące_w_dziczy: {
+    label: "🐺 Wilki wyjące w dziczy",
+    color: "hsl(0,0%,30%)",
+  },
   kotki_w_chwilach_relaksu: {
     label: "🐈 Kotki w chwilach relaksu",
     color: "hsl(var(--chart-4))",
@@ -39,21 +43,21 @@ const chartConfig: ChartConfig = {
     label: "🌸 Pejzażyste kwiaty i liście",
     color: "hsl(330, 100%, 50%)",
   },
-  nieustraszone_tygrysy: {
-    label: "🐅 Nieustraszone tygrysy",
-    color: "hsl(var(--chart-1))",
-  },
-  wilki_wyjące_w_dziczy: {
-    label: "🐺 Wilki wyjące w dziczy",
-    color: "hsl(120, 100%, 15%)",
-  },
+  // nieustraszone_tygrysy: {
+  //   label: "🐅 Nieustraszone tygrysy",
+  //   color: "hsl(var(--chart-1))",
+  // },
 };
 
 export default function TopicAreaChart() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Tattoo Topic Trends</CardTitle>
+        <CardTitle className="text-lg">Trends in Tattoo Topics </CardTitle>
+        <CardDescription>
+          Popularity of tattoo topics over the years. The Y axis represents the
+          number of appearances in a given month.
+        </CardDescription>
       </CardHeader>
       <CardContent>
         <ChartContainer config={chartConfig}>

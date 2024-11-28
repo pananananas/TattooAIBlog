@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     title: "TattooAI",
     description: "TattooAI",
     url: baseUrl,
-    siteName: "My Portfolio",
+    siteName: "TattooAI",
     locale: "en_US",
     type: "website",
   },
@@ -55,8 +55,8 @@ export default function RootLayout({
       )}
     >
       <CSPostHogProvider>
-        <body className="antialiased max-w-xl mx-4 mt-8 lg:mx-auto">
-          <main className="flex-auto min-w-0 mt-6 flex flex-col px-2 md:px-0">
+        <body className="antialiased max-w-xl mx-4 mt-8 sm:mx-auto">
+          <main className="flex-auto min-w-0 mt-6 flex flex-col px-2">
             <Navbar />
             {children}
             <Footer />
