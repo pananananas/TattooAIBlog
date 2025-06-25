@@ -181,7 +181,18 @@ export default function InkVisionLanding() {
         </motion.div>
 
         <div className="overflow-x-auto">
-          <div className="flex space-x-6 pb-4" style={{ width: "max-content" }}>
+          <div
+            className="flex space-x-6 pb-4 hide-scrollbar"
+            style={{ width: "max-content" }}
+          >
+            <style>
+              {`
+                    /* Hide scrollbar for Chrome, Safari and Opera */
+                    .hide-scrollbar::-webkit-scrollbar {
+                      display: none;
+                    }
+                  `}
+            </style>
             {[
               {
                 title: "The Science Behind AI Tattoo Visualization",
@@ -399,9 +410,23 @@ export default function InkVisionLanding() {
               <h3 className="text-2xl font-amatic font-bold text-gray-800 text-left lg:text-center mb-8">
                 Development Team
               </h3>
-              <div className="overflow-x-auto -mx-6 lg:-mx-48">
+              <div
+                className="overflow-x-auto -mx-6 lg:-mx-48"
+                style={{
+                  scrollbarWidth: "none", // Firefox
+                  msOverflowStyle: "none", // IE 10+
+                }}
+              >
+                <style>
+                  {`
+                    /* Hide scrollbar for Chrome, Safari and Opera */
+                    .hide-scrollbar::-webkit-scrollbar {
+                      display: none;
+                    }
+                  `}
+                </style>
                 <div
-                  className="flex gap-6 pb-4 px-6 lg:px-48"
+                  className="flex gap-6 pb-4 px-6 lg:px-48 hide-scrollbar"
                   style={{ width: "max-content" }}
                 >
                   {[

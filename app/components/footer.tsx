@@ -70,12 +70,12 @@ export function Footer({ onScrollToSection }: FooterProps) {
                 >
                   Team
                 </button>
-                <Link href="/privacy" className="block text-gray-600 hover:text-black transition-colors">
+                <div className="block text-gray-600 hover:text-black transition-colors">
                   Privacy Policy
-                </Link>
-                <Link href="/terms" className="block text-gray-600 hover:text-black transition-colors">
+                </div>
+                <div className="block text-gray-600 hover:text-black transition-colors">
                   Terms of Service
-                </Link>
+                </div>
               </div>
             </div>
 

@@ -82,6 +82,21 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="bg-cream/99">
+      <head>
+        {/* Preload critical hero images for instant loading */}
+        <link
+          rel="preload"
+          as="image"
+          href="https://utfs.io/a/oxjj5brc17/xNYugo9hq5N2lD3EIhskXiywK8rx16T2C7sSqh5jEmtdpg3L"
+          fetchPriority="high"
+        />
+        <link
+          rel="preload"
+          as="image"
+          href="https://utfs.io/a/oxjj5brc17/xNYugo9hq5N2ibOzW4e0zBWo1nIYFrOc7txGqpKdim0Cu9Pe"
+          fetchPriority="high"
+        />
+      </head>
       <CSPostHogProvider>
       <body className={`${amaticSC.variable} ${jetBrainsMono.variable} antialiased`}>
         {/* <Navbar /> */}

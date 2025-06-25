@@ -19,7 +19,7 @@ export function HeroSection({ onScrollToSection }: HeroSectionProps) {
         <motion.div
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+          transition={{ duration: 0.8, delay: 0 }}
           className="flex justify-center lg:justify-end order-1 lg:order-2"
         >
           <Image
@@ -28,13 +28,16 @@ export function HeroSection({ onScrollToSection }: HeroSectionProps) {
             width={400}
             height={600}
             className="max-w-full h-auto drop-shadow-2xl"
+            priority
+            fetchPriority="high"
+            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 400px"
           />
         </motion.div>
 
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.8, delay: 0 }}
           className="space-y-8 order-2 lg:order-1"
         >
           <div className="space-y-4">
@@ -44,6 +47,9 @@ export function HeroSection({ onScrollToSection }: HeroSectionProps) {
               width={500}
               height={200}
               className="max-w-full h-auto w-1/2 lg:w-full hidden lg:block"
+              priority
+              fetchPriority="high"
+              sizes="(max-width: 1024px) 50vw, 500px"
             />
             <p className="text-md lg:text-xl text-gray-600 font-geist leading-relaxed">
               Explore tattoo designs, create moodboards, and visualize how
