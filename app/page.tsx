@@ -426,6 +426,31 @@ export default function InkVisionLanding() {
                   image: "https://utfs.io/a/oxjj5brc17/xNYugo9hq5N2HgAqDEKJjlWzPtbysdAhN8O3RiIKYwBxk6cE",
                   portfolio: "https://haczmarek.vercel.app/",
                 },
+                {
+                  name: "Weronika Jakubowska",
+                  role: "3D ML Expert",
+                  image: "https://utfs.io/a/oxjj5brc17/weronika",
+                  portfolio: "https://genwro.ai.pwr.edu.pl/",
+                },
+                {
+                  name: "PhD Maciej Zięba",
+                  role: "Diffusion ML Expert",
+                  image: "https://utfs.io/a/oxjj5brc17/maciek",
+                  portfolio: "https://genwro.ai.pwr.edu.pl/",
+                },
+                {
+                  name: "PhD Kamil Adamczewski",
+                  role: "Technical Advisor",
+                  image: "https://utfs.io/a/oxjj5brc17/kamil",
+                  portfolio: "https://genwro.ai.pwr.edu.pl/",
+                },
+                {
+                  name: "PhD Piotr Bródka",
+                  role: "Technical Advisor",
+                  image: "https://utfs.io/a/oxjj5brc17/piotr",
+                  portfolio: "https://genwro.ai.pwr.edu.pl/",
+                },
+                
               ].map((member, index) => (
                 <motion.div
                   key={member.name}
