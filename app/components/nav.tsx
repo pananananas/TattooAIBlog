@@ -17,10 +17,10 @@ const navItems = {
 export function Navbar() {
   return (
     <aside className="mb-16 tracking-tight">
-      <div className="fixed left-0 right-0 top-0 flex flex-col justify-center items-center bg-gradient-to-b dark:from-zinc-950 dark:from-20 from-zinc-100 via-zinc-100/85 dark:via-zinc-950 z-50">
+      <div className="fixed left-0 right-0 top-0 flex flex-col justify-center items-center bg-gradient-to-b  from-cream/99 via-cream/85  z-50">
         <div className=" p-4 lg:w-1/2 w-full">
           <nav
-            className="flex flex-row items-start md:overflow-auto md:relative rounded-md border border-zinc-300 dark:border-zinc-900 bg-zinc-100/70 dark:bg-zinc-950/85 text-xl"
+            className="flex flex-row items-start md:overflow-auto md:relative rounded-md border border-zinc-300 bg-zinc-100/70  text-xl"
             id="nav"
           >
             <div
@@ -30,7 +30,7 @@ export function Navbar() {
               <Link
                 key={"/"}
                 href={"/"}
-                className="transition-all hover:text-neutral-800 dark:hover:text-neutral-200 flex pl-4 cursor-pointer"
+                className="transition-all hover:text-neutral-800 flex pl-4 cursor-pointer"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -56,7 +56,7 @@ export function Navbar() {
                   <Link
                     key={path}
                     href={path}
-                    className="transition-all hover:text-neutral-800 dark:hover:text-neutral-200 flex py-1.5 p-r2 cursor-pointer"
+                    className="transition-all hover:text-neutral-800 flex py-1.5 p-r2 cursor-pointer"
                   >
                     <Button
                       variant="ghost"
