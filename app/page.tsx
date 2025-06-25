@@ -599,7 +599,7 @@ export default function InkVisionLanding() {
                   </Button>
                 </form>
                 <p className="text-sm opacity-70 mt-4 font-geist">
-                  No spam, just updates on our launch. Unsubscribe anytime.
+                  No spam, just updates on our launch.
                 </p>
               </div>
             </div>
