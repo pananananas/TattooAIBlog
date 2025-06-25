@@ -126,7 +126,7 @@ export default function Navbar() {
           style={{ opacity: showGradient ? 1 : 0 }}
         />
 
-        <div className="container relative z-10 mx-auto w-full pt-6 px-6 md:px-20 xl:px-44">
+        <div className="container relative z-10 mx-auto w-full pt-2 lg:pt-6 px-6 md:px-20 xl:px-44">
           <div
             className={cn(
               "flex items-center justify-between rounded-[20px] border px-3 py-2 transition-all duration-700 ease-in-out",
