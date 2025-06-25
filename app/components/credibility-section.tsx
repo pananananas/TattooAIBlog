@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 export function CredibilitySection() {
   return (
@@ -22,7 +23,7 @@ export function CredibilitySection() {
         </p>
 
         <div className="flex flex-wrap justify-center items-center gap-2 lg:gap-12">
-          <div className="flex flex-col items-center gap-1 lg:gap-2">
+          <Link href="https://pwr.edu.pl/" className="flex flex-col items-center gap-1 lg:gap-2">
             <Image
               src="https://utfs.io/a/oxjj5brc17/xNYugo9hq5N2tazgf3pJyGqKD0uVMc3UbP5dZXCw2v4fknrm"
               alt="Wrocław University of Science and Technology"
@@ -33,8 +34,8 @@ export function CredibilitySection() {
             <p className="text-xs max-w-24">
               University <br /> of Science <br /> and Technology
             </p>
-          </div>
-          <div className="flex flex-col items-center gap-2">
+          </Link>
+          <Link href="https://www.plgrid.pl/" className="flex flex-col items-center gap-2">
             <Image
               src="https://utfs.io/a/oxjj5brc17/xNYugo9hq5N2K41VpB7kWUESHayn6gMcVwYZ8OevL9pJ5jAi"
               alt="PLGrid"
@@ -43,8 +44,8 @@ export function CredibilitySection() {
               className="h-12 lg:h-16 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity"
             />
             <p className="text-xs max-w-24">PLGrid computational resources</p>
-          </div>
-          <div className="flex flex-col items-center gap-2">
+          </Link>
+          <Link href="https://ai.pwr.edu.pl/" className="flex flex-col items-center gap-2">
             <Image
               src="https://utfs.io/a/oxjj5brc17/xNYugo9hq5N2ZwBcf1WHvWyzso2OQ5pBDAjV4exibNU9SwmP"
               alt="Katedra Sztucznej Inteligencji"
@@ -55,7 +56,7 @@ export function CredibilitySection() {
             <p className="text-xs max-w-24">
               Department <br /> of Artificial Intelligence
             </p>
-          </div>
+          </Link>
         </div>
       </motion.div>
     </section>

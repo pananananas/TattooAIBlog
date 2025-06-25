@@ -406,19 +406,19 @@ export default function InkVisionLanding() {
                   name: "Dariusz Palt",
                   role: "AI Engineer: CV & 3D",
                   image: "https://utfs.io/a/oxjj5brc17/xNYugo9hq5N2W9WS1xmc0kAa4M8uzG9ZTifQmNe3sFow7dLX",
-                  portfolio: "https://dariuszpalt.dev",
+                  portfolio: "https://www.linkedin.com/in/dariusz-palt-709b8214a",
                 },
                 {
                   name: "Patryk Polkowski",
                   role: "AI Engineer: 3D ",
                   image: "https://utfs.io/a/oxjj5brc17/xNYugo9hq5N2G5ZWVV4G9ioa2bnI8wXQKkdztyuLNAhxfZrm",
-                  portfolio: "https://patrykpolkowski.dev",
+                  portfolio: "https://www.linkedin.com/in/patryk-polkowski?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
                 },
                 {
                   name: "Bartłomiej Gintowt",
                   role: "AI Engineer: Diffusion",
                   image: "https://utfs.io/a/oxjj5brc17/xNYugo9hq5N2NS7DDo53ZjAaJmlBFytHbuf6KQ40e82xSOhV",
-                  portfolio: "https://bartlomiejgintowt.dev",
+                  portfolio: "https://www.linkedin.com/in/bart%C5%82omiej-gintowt-188838371/",
                 },
                 {
                   name: "Hanna Kaczmarek",
@@ -447,8 +447,8 @@ export default function InkVisionLanding() {
                 {
                   name: "PhD Piotr Bródka",
                   role: "Technical Advisor",
-                  image: "https://utfs.io/a/oxjj5brc17/piotr",
-                  portfolio: "https://genwro.ai.pwr.edu.pl/",
+                  image: "https://utfs.io/a/oxjj5brc17/xNYugo9hq5N2t1gzVzpJyGqKD0uVMc3UbP5dZXCw2v4fknrm",
+                  portfolio: "https://linktr.ee/piotrbrodka",
                 },
                 
               ].map((member, index) => (
