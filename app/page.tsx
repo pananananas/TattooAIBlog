@@ -25,66 +25,12 @@ export default function InkVisionLanding() {
 
   return (
     <div className=" bg-cream/99">
-      {/* Navigation */}
-      <nav className="sticky top-0 z-50 bg-cream/99 backdrop-blur-sm">
-        <div className="container mx-auto px-4 lg:px-24 py-2 flex items-center justify-between">
-          <div className="flex items-center space-x-2">
-            <Image
-              src="https://utfs.io/a/oxjj5brc17/xNYugo9hq5N2k7YyKJzbFynlcTW4Hm5VKaedwSfQjChPG6Xp"
-              alt="InkVision Logo"
-              width={48}
-              height={48}
-              className="rounded-lg"
-            />
-            <div className="text-xl lg:text-2xl font-amatic font-bold text-gray-800 pl-2">
-              InkVision
-            </div>
-          </div>
 
-          <div className="hidden md:flex items-center space-x-8">
-            <button
-              onClick={() => scrollToSection("hero")}
-              className="text-gray-700 hover:text-black transition-colors font-geist text-sm lg:text-base"
-            >
-              Home
-            </button>
-            <button
-              onClick={() => scrollToSection("features")}
-              className="text-gray-700 hover:text-black transition-colors font-geist text-sm lg:text-base"
-            >
-              Features
-            </button>
-            <button
-              onClick={() => scrollToSection("team")}
-              className="text-gray-700 hover:text-black transition-colors font-geist text-sm lg:text-base"
-            >
-              Team
-            </button>
-            <button
-              onClick={() => scrollToSection("faq")}
-              className="text-gray-700 hover:text-black transition-colors font-geist text-sm lg:text-base"
-            >
-              FAQ
-            </button>
-            <Link
-              href="/blog"
-              className="text-gray-700 hover:text-black transition-colors font-geist text-sm lg:text-base"
-            >
-              Blog
-            </Link>
-          </div>
-
-          <Button
-            onClick={() => scrollToSection("waitlist")}
-            className="bg-black text-white hover:bg-gray-800 font-geist text-sm lg:text-base"
-          >
-            Join Waitlist
-          </Button>
-        </div>
-      </nav>
 
       {/* Hero Section */}
-      <HeroSection onScrollToSection={scrollToSection} />
+      <div id="hero">
+        <HeroSection onScrollToSection={scrollToSection} />
+      </div>
 
       {/* Credibility Section */}
       <CredibilitySection />
@@ -165,7 +111,9 @@ export default function InkVisionLanding() {
       </section>
 
       {/* Features Section */}
-      <FeaturesSection />
+      <div id="features">
+        <FeaturesSection />
+      </div>
 
       {/* Blog Section */}
       <section className="container mx-auto px-4 lg:px-24 py-8 lg:py-16 max-w-7xl">

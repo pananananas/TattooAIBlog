@@ -2,7 +2,7 @@ import "./global.css";
 import type { Metadata } from "next";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
-import { Navbar } from "./components/nav";
+import Navbar from "./components/nav";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { CSPostHogProvider } from "./_analytics/providers";
 import { Amatic_SC } from "next/font/google";
@@ -94,8 +94,10 @@ export default function RootLayout({
       </head>
       <CSPostHogProvider>
       <body className="antialiased">
-        {/* <Navbar /> */}
+        <Navbar />
         {children}
+        <SpeedInsights />
+        <Toaster />
         </body>
       </CSPostHogProvider>
     </html>
