@@ -31,7 +31,7 @@ export function CredibilitySection() {
               className="h-12 lg:h-16 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity"
             />
             <p className="text-xs max-w-24">
-              Wrocław University of Science and Technology
+              University <br /> of Science <br /> and Technology
             </p>
           </div>
           <div className="flex flex-col items-center gap-2">
@@ -53,7 +53,7 @@ export function CredibilitySection() {
               className="h-12 lg:h-16 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity"
             />
             <p className="text-xs max-w-24">
-              Department of Artificial Intelligence
+              Department <br /> of Artificial Intelligence
             </p>
           </div>
         </div>

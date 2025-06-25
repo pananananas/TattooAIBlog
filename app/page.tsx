@@ -149,44 +149,40 @@ export default function InkVisionLanding() {
           <div className="flex gap-4 lg:gap-6 pb-4 px-4 lg:px-0 hide-scrollbar min-w-max items-start">
             {[
               {
-                title: "The Science Behind AI Tattoo Visualization",
+                title: "Beyond the Uncanny Valley",
                 excerpt:
-                  "How machine learning algorithms analyze skin texture and lighting to create realistic tattoo previews.",
+                  "Explore how parametric models are revolutionizing 3D avatars - Why this is the right diraction for tattoo visualization.",
+                image:
+                  "https://utfs.io/a/oxjj5brc17/xNYugo9hq5N2bMEPVrKnNmTE5LR1ofd6r2JMpah4lUgISy03",
+                category: "3D AI",
+                slug: "parametric-models",
+              },
+              {
+                title: "Where am I?",
+                excerpt:
+                  "We built a method of Multi-View Diffusion with comparable results to SoTA, but 4x faster.",
                 image:
                   "https://utfs.io/a/oxjj5brc17/xNYugo9hq5N2vO2g1pT7dNVFw8oSOluz9TbHIB5itJ3yjmea",
-                category: "Technology",
+                category: "Image -> 3D",
+                slug: "multiview",
               },
               {
-                title: "Creating the Perfect Moodboard",
+                title: "Tattoo Overlay on Human Skin",
                 excerpt:
-                  "Tips and tricks for organizing your tattoo inspiration and communicating with your artist.",
+                  "We developed a pipeline for realistic tattoo application on photos of human bodies using generative models from the Flux family. Our approach combines Flux.1 Fill dev with custom LoRA adapters for unprecedented realism.",
+                image:
+                  "https://utfs.io/a/oxjj5brc17/xNYugo9hq5N2TElBznFQpBwYfiEI6AgFcVZSbjG8HeUkdNRP",
+                category: "Generative AI",
+                slug: "inpainting",
+              },
+              {
+                title: "Trends in Tattoo Styles",
+                excerpt:
+                  "Tattoos have been around for centuries, but the styles and techniques used have evolved over time. From traditional to modern, here are some of the most popular tattoo styles today based on our analysis of 55,000 Reddit posts.",
                 image:
                   "https://utfs.io/a/oxjj5brc17/xNYugo9hq5N2Qr9mg5eJ7E6HR9VLANrdSl85TGeCw1hmbxc2",
-                category: "Design",
-              },
-              {
-                title: "3D Body Modeling: The Future is Here",
-                excerpt:
-                  "Explore how 3D technology is revolutionizing the way we visualize tattoos on different body parts.",
-                image:
-                  "https://utfs.io/a/oxjj5brc17/xNYugo9hq5N2vYX9GlT7dNVFw8oSOluz9TbHIB5itJ3yjmea",
-                category: "Innovation",
-              },
-              {
-                title: "Understanding Tattoo Styles with AI",
-                excerpt:
-                  "How our AI categorizes and recommends tattoo designs based on artistic styles and themes.",
-                image:
-                  "https://utfs.io/a/oxjj5brc17/xNYugo9hq5N2lD3EIhskXiywK8rx16T2C7sSqh5jEmtdpg3L",
-                category: "AI",
-              },
-              {
-                title: "From Concept to Skin: A Digital Journey",
-                excerpt:
-                  "Follow the complete process from finding inspiration to visualizing your perfect tattoo.",
-                image:
-                  "https://utfs.io/a/oxjj5brc17/xNYugo9hq5N2XFIVTzBvhi52FEL4fTBwOMVez8ncs9CHbKt0",
-                category: "Process",
+                category: "Data Analysis",
+                slug: "tattoo",
               },
             ].map((post, index) => (
               <motion.div
@@ -196,42 +192,44 @@ export default function InkVisionLanding() {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <Card className="w-48 lg:w-80 h-100 lg:h-auto bg-black text-white border-gray-800 flex-shrink-0 rounded-3xl cursor-pointer hover:bg-gray-900 transition-colors">
-                  <CardContent className="p-3 lg:p-4 text-left h-full lg:h-auto flex flex-col lg:space-y-3">
-                    <div className="w-full aspect-square bg-gray-700 rounded-2xl flex items-center justify-center overflow-hidden flex-shrink-0 relative">
-                      <Image
-                        src={post.image || "/placeholder.svg"}
-                        alt={post.title}
-                        width={320}
-                        height={320}
-                        className="w-full h-full object-cover"
-                      />
-                      {/* Overlaid elements in bottom right */}
-                      <div className="absolute bottom-2 right-2 space-y-2 flex flex-col items-end">
-                        <span className="bg-black/80 text-white px-2 py-1 rounded text-xs font-geist backdrop-blur-sm">
-                          {post.category}
-                        </span>
+                <Link href={`/blog/${post.slug}`}>
+                  <Card className="w-48 lg:w-80 h-100 lg:h-auto bg-black text-white border-gray-800 flex-shrink-0 rounded-3xl cursor-pointer hover:bg-gray-900 transition-colors">
+                    <CardContent className="p-3 lg:p-4 text-left h-full lg:h-auto flex flex-col lg:space-y-3">
+                      <div className="w-full aspect-square bg-gray-700 rounded-2xl flex items-center justify-center overflow-hidden flex-shrink-0 relative">
+                        <Image
+                          src={post.image || "/placeholder.svg"}
+                          alt={post.title}
+                          width={320}
+                          height={320}
+                          className="w-full h-full object-cover"
+                        />
+                        {/* Overlaid elements in bottom right */}
+                        <div className="absolute bottom-2 right-2 space-y-2 flex flex-col items-end">
+                          <span className="bg-black/80 text-white px-2 py-1 rounded-full text-xs font-geist backdrop-blur-sm">
+                            {post.category}
+                          </span>
+                        </div>
                       </div>
-                    </div>
-                    <div className="flex-1 lg:flex-none flex flex-col justify-center lg:justify-start space-y-1 lg:space-y-2 py-1 lg:py-2 min-h-0">
-                      <h3 className="text-lg lg:text-2xl font-amatic font-bold text-white leading-tight">
-                        {post.title}
-                      </h3>
-                      <p className="text-gray-300 font-geist text-xs lg:text-sm leading-tight line-clamp-3">
-                        {post.excerpt}
-                      </p>
-                    </div>
-                    <CardFooter className="flex justify-end p-1 pt-3">
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        className="bg-white/90 text-black border-0 hover:bg-white font-geist text-xs px-2 py-1 h-auto backdrop-blur-sm w-full"
-                      >
-                        Read More
-                      </Button>
-                    </CardFooter>
-                  </CardContent>
-                </Card>
+                      <div className="flex-1 lg:flex-none flex flex-col justify-center lg:justify-start space-y-1 lg:space-y-2 py-1 lg:py-2 min-h-0">
+                        <h3 className="text-lg lg:text-2xl font-amatic font-bold text-white leading-tight">
+                          {post.title}
+                        </h3>
+                        <p className="text-gray-300 font-geist text-xs lg:text-sm leading-tight line-clamp-3">
+                          {post.excerpt}
+                        </p>
+                      </div>
+                      <CardFooter className="flex justify-end p-1 pt-3">
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          className="bg-white/90 text-black border-0 hover:bg-white font-geist text-xs px-2 py-1 h-auto backdrop-blur-sm w-full"
+                        >
+                          Read More
+                        </Button>
+                      </CardFooter>
+                    </CardContent>
+                  </Card>
+                </Link>
               </motion.div>
             ))}
           </div>
@@ -372,110 +370,109 @@ export default function InkVisionLanding() {
             </p>
           </motion.div>
 
-            <div
-              className="overflow-x-auto overflow-y-hidden -mx-4 lg:-mx-0"
-              style={{
-                scrollbarWidth: "none", // Firefox
-                msOverflowStyle: "none", // IE 10+
-              }}
-            >
-              <style>
-                {`
+          <div
+            className="overflow-x-auto overflow-y-hidden -mx-4 lg:-mx-0"
+            style={{
+              scrollbarWidth: "none", // Firefox
+              msOverflowStyle: "none", // IE 10+
+            }}
+          >
+            <style>
+              {`
                     /* Hide scrollbar for Chrome, Safari and Opera */
                     .hide-scrollbar::-webkit-scrollbar {
                       display: none;
                     }
                   `}
-              </style>
-              <div className="flex gap-4 lg:gap-6 pb-4 px-4 lg:px-0 hide-scrollbar min-w-max items-start">
-                {[
-                  {
-                    name: "Eryk Wójcik",
-                    role: "Lead Developer",
-                    image: "https://utfs.io/a/oxjj5brc17/eryk-wojcik.jpg",
-                    portfolio: "https://ewoj.dev",
-                  },
-                  {
-                    name: "Dariusz Palt",
-                    role: "AI Engineer: CV & 3D",
-                    image: "https://utfs.io/a/oxjj5brc17/dariusz-palt.jpg",
-                    portfolio: "https://dariuszpalt.dev",
-                  },
-                  {
-                    name: "Patryk Polkowski",
-                    role: "AI Engineer: 3D ",
-                    image: "https://utfs.io/a/oxjj5brc17/patryk-polkowski.jpg",
-                    portfolio: "https://patrykpolkowski.dev",
-                  },
-                  {
-                    name: "Bartłomiej Gintowt",
-                    role: "AI Engineer: Diffusion",
-                    image:
-                      "https://utfs.io/a/oxjj5brc17/bartlomiej-gintowt.jpg",
-                    portfolio: "https://bartlomiejgintowt.dev",
-                  },
-                  {
-                    name: "Hanna Kaczmarek",
-                    role: "UI/UX Designer",
-                    image: "https://utfs.io/a/oxjj5brc17/hanna-kaczmarek.jpg",
-                    portfolio: "https://haczmarek.vercel.app/",
-                  },
-                ].map((member, index) => (
-                  <motion.div
-                    key={member.name}
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: index * 0.1 }}
-                    viewport={{ once: true }}
+            </style>
+            <div className="flex gap-4 lg:gap-6 pb-4 px-4 lg:px-0 hide-scrollbar min-w-max items-start">
+              {[
+                {
+                  name: "Eryk Wójcik",
+                  role: "Lead Developer",
+                  image: "https://utfs.io/a/oxjj5brc17/eryk-wojcik.jpg",
+                  portfolio: "https://ewoj.dev",
+                },
+                {
+                  name: "Dariusz Palt",
+                  role: "AI Engineer: CV & 3D",
+                  image: "https://utfs.io/a/oxjj5brc17/dariusz-palt.jpg",
+                  portfolio: "https://dariuszpalt.dev",
+                },
+                {
+                  name: "Patryk Polkowski",
+                  role: "AI Engineer: 3D ",
+                  image: "https://utfs.io/a/oxjj5brc17/patryk-polkowski.jpg",
+                  portfolio: "https://patrykpolkowski.dev",
+                },
+                {
+                  name: "Bartłomiej Gintowt",
+                  role: "AI Engineer: Diffusion",
+                  image: "https://utfs.io/a/oxjj5brc17/bartlomiej-gintowt.jpg",
+                  portfolio: "https://bartlomiejgintowt.dev",
+                },
+                {
+                  name: "Hanna Kaczmarek",
+                  role: "UI/UX Designer",
+                  image: "https://utfs.io/a/oxjj5brc17/hanna-kaczmarek.jpg",
+                  portfolio: "https://haczmarek.vercel.app/",
+                },
+              ].map((member, index) => (
+                <motion.div
+                  key={member.name}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                >
+                  <Card
+                    className="w-48 lg:w-80 h-72 lg:h-auto bg-black text-white border-gray-800 flex-shrink-0 rounded-3xl cursor-pointer hover:bg-gray-900 transition-colors"
+                    onClick={() =>
+                      member.portfolio &&
+                      window.open(member.portfolio, "_blank")
+                    }
                   >
-                    <Card
-                      className="w-48 lg:w-80 h-72 lg:h-auto bg-black text-white border-gray-800 flex-shrink-0 rounded-3xl cursor-pointer hover:bg-gray-900 transition-colors"
-                      onClick={() =>
-                        member.portfolio &&
-                        window.open(member.portfolio, "_blank")
-                      }
-                    >
-                      <CardContent className="p-3 lg:p-4 text-left h-full lg:h-auto flex flex-col lg:space-y-3">
-                        <div className="w-full aspect-square bg-gray-700 rounded-2xl flex items-center justify-center overflow-hidden flex-shrink-0">
-                          <Image
-                            src={member.image}
-                            alt={member.name}
-                            width={160}
-                            height={160}
-                            className="w-full h-full object-cover"
-                            onError={(e) => {
-                              const target = e.target as HTMLImageElement;
-                              target.style.display = "none";
-                              const fallback =
-                                target.nextElementSibling as HTMLElement;
-                              if (fallback) fallback.style.display = "flex";
-                            }}
-                          />
-                          <div
-                            className="w-full h-full hidden items-center justify-center"
-                            style={{ display: "none" }}
-                          >
-                            <Users className="h-16 lg:h-20 w-16 lg:w-20 text-gray-400" />
-                          </div>
+                    <CardContent className="p-3 lg:p-4 text-left h-full lg:h-auto flex flex-col lg:space-y-3">
+                      <div className="w-full aspect-square bg-gray-700 rounded-2xl flex items-center justify-center overflow-hidden flex-shrink-0">
+                        <Image
+                          src={member.image}
+                          alt={member.name}
+                          width={160}
+                          height={160}
+                          className="w-full h-full object-cover"
+                          onError={(e) => {
+                            const target = e.target as HTMLImageElement;
+                            target.style.display = "none";
+                            const fallback =
+                              target.nextElementSibling as HTMLElement;
+                            if (fallback) fallback.style.display = "flex";
+                          }}
+                        />
+                        <div
+                          className="w-full h-full hidden items-center justify-center"
+                          style={{ display: "none" }}
+                        >
+                          <Users className="h-16 lg:h-20 w-16 lg:w-20 text-gray-400" />
                         </div>
-                        <div className="flex-1 lg:flex-none flex flex-col justify-center lg:justify-start space-y-1 lg:space-y-2 py-1 lg:py-2 min-h-0">
-                          <h4 className="text-lg lg:text-2xl font-amatic font-bold text-white leading-tight">
-                            {member.name}
-                          </h4>
-                          <p className="text-gray-300 font-geist text-xs lg:text-sm leading-tight">
-                            {member.role}
-                          </p>
-                          {/* {member.portfolio && (
+                      </div>
+                      <div className="flex-1 lg:flex-none flex flex-col justify-center lg:justify-start space-y-1 lg:space-y-2 py-1 lg:py-2 min-h-0">
+                        <h4 className="text-lg lg:text-2xl font-amatic font-bold text-white leading-tight">
+                          {member.name}
+                        </h4>
+                        <p className="text-gray-300 font-geist text-xs lg:text-sm leading-tight">
+                          {member.role}
+                        </p>
+                        {/* {member.portfolio && (
                               <p className="text-gray-400 font-geist text-xs hidden lg:block">
                                 Click to view portfolio →
                               </p>
                             )} */}
-                        </div>
-                      </CardContent>
-                    </Card>
-                  </motion.div>
-                ))}
-              </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
