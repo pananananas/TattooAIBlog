@@ -423,7 +423,7 @@ export default function InkVisionLanding() {
                 {
                   name: "Hanna Kaczmarek",
                   role: "UI/UX Designer",
-                  image: "https://utfs.io/a/oxjj5brc17/xNYugo9hq5N2HgAqDEKJjlWzPtbysdAhN8O3RiIKYwBxk6cE",
+                  image: "https://utfs.io/a/oxjj5brc17/https:/xNYugo9hq5N2EuC4c7Zd3Mb1RFgVrYTOBQn5ulPzWiewhJjt",
                   portfolio: "https://haczmarek.vercel.app/",
                 },
                 {
