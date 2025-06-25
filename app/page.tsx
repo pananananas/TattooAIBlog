@@ -193,7 +193,7 @@ export default function InkVisionLanding() {
                 viewport={{ once: true }}
               >
                 <Link href={`/blog/${post.slug}`}>
-                  <Card className="w-48 lg:w-80 h-100 lg:h-auto bg-black text-white border-gray-800 flex-shrink-0 rounded-3xl cursor-pointer hover:bg-gray-900 transition-colors">
+                  <Card className="w-48 lg:w-80 h-100 lg:h-auto bg-black text-white border-gray-800 flex-shrink-0 rounded-3xl cursor-pointer transition-colors">
                     <CardContent className="p-3 lg:p-4 text-left h-full lg:h-auto flex flex-col lg:space-y-3">
                       <div className="w-full aspect-square bg-gray-700 rounded-2xl flex items-center justify-center overflow-hidden flex-shrink-0 relative">
                         <Image
@@ -426,7 +426,7 @@ export default function InkVisionLanding() {
                   viewport={{ once: true }}
                 >
                   <Card
-                    className="w-48 lg:w-80 h-72 lg:h-auto bg-black text-white border-gray-800 flex-shrink-0 rounded-3xl cursor-pointer hover:bg-gray-900 transition-colors"
+                    className="w-48 lg:w-80 h-72 lg:h-auto bg-black text-white border-gray-800 flex-shrink-0 rounded-3xl cursor-pointer transition-colors"
                     onClick={() =>
                       member.portfolio &&
                       window.open(member.portfolio, "_blank")
@@ -571,7 +571,6 @@ export default function InkVisionLanding() {
                 alt="InkVision Logo"
                 width={200}
                 height={200}
-                className="hover:opacity-90 transition-opacity"
               />
             </div>
 
