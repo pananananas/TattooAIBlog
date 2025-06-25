@@ -23,10 +23,7 @@ export function Navbar() {
             className="flex flex-row items-start md:overflow-auto md:relative rounded-md border border-zinc-300 bg-zinc-100/70  text-xl"
             id="nav"
           >
-            <div
-              className={`flex flex-row gap-0 items-center ${GeistMono.variable}`}
-              style={{ fontFamily: "var(--font-geist-mono)" }}
-            >
+            <div className="flex flex-row gap-0 items-center font-geist">
               <Link
                 key={"/"}
                 href={"/"}

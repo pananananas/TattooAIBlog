@@ -2,7 +2,7 @@
 
 import { CredibilitySection } from "./components/credibility-section";
 import { FeaturesSection } from "./components/feature-section";
-import { Card, CardContent } from "./components/ui/card";
+import { Card, CardContent, CardFooter } from "./components/ui/card";
 import { HeroSection } from "./components/hero-section";
 import { Footer } from "./components/footer";
 import { Button } from "./components/ui/button";
@@ -24,10 +24,10 @@ export default function InkVisionLanding() {
   };
 
   return (
-    <div className="min-h-screen bg-cream/99">
+    <div className=" bg-cream/99">
       {/* Navigation */}
-      <nav className="sticky top-0 z-50 bg-cream/99 backdrop-blur-sm border-b border-gray-200">
-        <div className="container mx-auto px-6 lg:px-24 py-2 flex items-center justify-between">
+      <nav className="sticky top-0 z-50 bg-cream/99 backdrop-blur-sm">
+        <div className="container mx-auto px-4 lg:px-24 py-2 flex items-center justify-between">
           <div className="flex items-center space-x-2">
             <Image
               src="https://utfs.io/a/oxjj5brc17/xNYugo9hq5N2k7YyKJzbFynlcTW4Hm5VKaedwSfQjChPG6Xp"
@@ -36,7 +36,7 @@ export default function InkVisionLanding() {
               height={48}
               className="rounded-lg"
             />
-            <div className="text-2xl font-amatic font-bold text-gray-800 pl-2">
+            <div className="text-xl lg:text-2xl font-amatic font-bold text-gray-800 pl-2">
               InkVision
             </div>
           </div>
@@ -44,31 +44,31 @@ export default function InkVisionLanding() {
           <div className="hidden md:flex items-center space-x-8">
             <button
               onClick={() => scrollToSection("hero")}
-              className="text-gray-700 hover:text-black transition-colors font-geist"
+              className="text-gray-700 hover:text-black transition-colors font-geist text-sm lg:text-base"
             >
               Home
             </button>
             <button
               onClick={() => scrollToSection("features")}
-              className="text-gray-700 hover:text-black transition-colors font-geist"
+              className="text-gray-700 hover:text-black transition-colors font-geist text-sm lg:text-base"
             >
               Features
             </button>
             <button
               onClick={() => scrollToSection("team")}
-              className="text-gray-700 hover:text-black transition-colors font-geist"
+              className="text-gray-700 hover:text-black transition-colors font-geist text-sm lg:text-base"
             >
               Team
             </button>
             <button
               onClick={() => scrollToSection("faq")}
-              className="text-gray-700 hover:text-black transition-colors font-geist"
+              className="text-gray-700 hover:text-black transition-colors font-geist text-sm lg:text-base"
             >
               FAQ
             </button>
             <Link
               href="/blog"
-              className="text-gray-700 hover:text-black transition-colors font-geist"
+              className="text-gray-700 hover:text-black transition-colors font-geist text-sm lg:text-base"
             >
               Blog
             </Link>
@@ -76,7 +76,7 @@ export default function InkVisionLanding() {
 
           <Button
             onClick={() => scrollToSection("waitlist")}
-            className="bg-black text-white hover:bg-gray-800 font-geist"
+            className="bg-black text-white hover:bg-gray-800 font-geist text-sm lg:text-base"
           >
             Join Waitlist
           </Button>
@@ -92,20 +92,20 @@ export default function InkVisionLanding() {
       {/* Why We're Building This */}
       <section
         id="why-building"
-        className="container mx-auto px-6 lg:px-24 py-16"
+        className="container mx-auto px-4 lg:px-24 py-8 lg:py-16"
       >
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="max-w-4xl mx-auto text-center space-y-12"
+          className="max-w-4xl mx-auto text-center space-y-8 lg:space-y-12"
         >
-          <h2 className="text-4xl lg:text-5xl font-amatic font-bold text-gray-800">
+          <h2 className="text-2xl lg:text-5xl font-amatic font-bold text-gray-800">
             The Tattoo Dilemma
           </h2>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
             {[
               {
                 emoji: "🤔",
@@ -132,13 +132,15 @@ export default function InkVisionLanding() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.2 }}
                 viewport={{ once: true }}
-                className="space-y-4"
+                className="space-y-3 lg:space-y-4"
               >
-                <div className="text-6xl">{item.emoji}</div>
-                <h3 className="text-2xl font-amatic font-bold text-gray-800">
+                <div className="text-4xl lg:text-6xl">{item.emoji}</div>
+                <h3 className="text-lg lg:text-2xl font-amatic font-bold text-gray-800">
                   {item.title}
                 </h3>
-                <p className="text-gray-600 font-geist">{item.description}</p>
+                <p className="text-sm lg:text-base text-gray-600 font-geist">
+                  {item.description}
+                </p>
               </motion.div>
             ))}
           </div>
@@ -148,12 +150,15 @@ export default function InkVisionLanding() {
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.4 }}
             viewport={{ once: true }}
-            className="bg-black text-white p-8 rounded-2xl"
+            className="bg-black text-white p-6 lg:p-8 rounded-2xl"
           >
-            <h3 className="text-3xl font-amatic font-bold mb-4">The Reality</h3>
-            <p className="text-xl font-geist">
-              We commit to permanent tattoos without knowing how they'll
-              actually look.
+            <h3 className="text-xl lg:text-3xl font-amatic font-bold mb-4">
+              The Reality
+            </h3>
+            <p className="text-base lg:text-xl font-geist text-center">
+              We commit to permanent tattoos
+              <br />
+              without knowing how they'll actually look.
             </p>
           </motion.div>
         </motion.div>
@@ -163,36 +168,39 @@ export default function InkVisionLanding() {
       <FeaturesSection />
 
       {/* Blog Section */}
-      <section className="container mx-auto px-6 lg:px-48 py-16">
+      <section className="container mx-auto px-4 lg:px-24 py-8 lg:py-16 max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-left lg:text-center mb-16"
+          className="text-left lg:text-center mb-8 lg:mb-16"
         >
-          <h2 className="text-4xl lg:text-5xl font-amatic font-bold text-gray-800 mb-6">
+          <h2 className="text-2xl lg:text-5xl font-amatic font-bold text-gray-800 mb-6">
             Latest from Our Blog
           </h2>
-          <p className="text-xl text-gray-600 font-geist">
+          <p className="text-base lg:text-xl text-gray-600 font-geist">
             Discover insights about tattoo culture, technology, and the future
             of body art visualization.
           </p>
         </motion.div>
 
-        <div className="overflow-x-auto">
-          <div
-            className="flex space-x-6 pb-4 hide-scrollbar"
-            style={{ width: "max-content" }}
-          >
-            <style>
-              {`
-                    /* Hide scrollbar for Chrome, Safari and Opera */
-                    .hide-scrollbar::-webkit-scrollbar {
-                      display: none;
-                    }
-                  `}
-            </style>
+        <div
+          className="overflow-x-auto overflow-y-hidden -mx-4 lg:-mx-0"
+          style={{
+            scrollbarWidth: "none", // Firefox
+            msOverflowStyle: "none", // IE 10+
+          }}
+        >
+          <style>
+            {`
+              /* Hide scrollbar for Chrome, Safari and Opera */
+              .hide-scrollbar::-webkit-scrollbar {
+                display: none;
+              }
+            `}
+          </style>
+          <div className="flex gap-4 lg:gap-6 pb-4 px-4 lg:px-0 hide-scrollbar min-w-max items-start">
             {[
               {
                 title: "The Science Behind AI Tattoo Visualization",
@@ -242,35 +250,40 @@ export default function InkVisionLanding() {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <Card className="w-80 bg-white border-gray-200 hover:shadow-lg transition-shadow cursor-pointer">
-                  <div className="aspect-video overflow-hidden rounded-t-lg">
-                    <Image
-                      src={post.image || "/placeholder.svg"}
-                      alt={post.title}
-                      width={320}
-                      height={180}
-                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                    />
-                  </div>
-                  <CardContent className="p-6 space-y-4">
-                    <div className="flex items-center space-x-2">
-                      <span className="bg-black text-white px-2 py-1 rounded text-xs font-geist">
-                        {post.category}
-                      </span>
+                <Card className="w-48 lg:w-80 h-100 lg:h-auto bg-black text-white border-gray-800 flex-shrink-0 rounded-3xl cursor-pointer hover:bg-gray-900 transition-colors">
+                  <CardContent className="p-3 lg:p-4 text-left h-full lg:h-auto flex flex-col lg:space-y-3">
+                    <div className="w-full aspect-square bg-gray-700 rounded-2xl flex items-center justify-center overflow-hidden flex-shrink-0 relative">
+                      <Image
+                        src={post.image || "/placeholder.svg"}
+                        alt={post.title}
+                        width={320}
+                        height={320}
+                        className="w-full h-full object-cover"
+                      />
+                      {/* Overlaid elements in bottom right */}
+                      <div className="absolute bottom-2 right-2 space-y-2 flex flex-col items-end">
+                        <span className="bg-black/80 text-white px-2 py-1 rounded text-xs font-geist backdrop-blur-sm">
+                          {post.category}
+                        </span>
+                      </div>
                     </div>
-                    <h3 className="text-lg font-amatic font-bold text-gray-800 line-clamp-2">
-                      {post.title}
-                    </h3>
-                    <p className="text-gray-600 font-geist text-sm line-clamp-3">
-                      {post.excerpt}
-                    </p>
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      className="w-full font-geist"
-                    >
-                      Read More
-                    </Button>
+                    <div className="flex-1 lg:flex-none flex flex-col justify-center lg:justify-start space-y-1 lg:space-y-2 py-1 lg:py-2 min-h-0">
+                      <h3 className="text-lg lg:text-2xl font-amatic font-bold text-white leading-tight">
+                        {post.title}
+                      </h3>
+                      <p className="text-gray-300 font-geist text-xs lg:text-sm leading-tight line-clamp-3">
+                        {post.excerpt}
+                      </p>
+                    </div>
+                    <CardFooter className="flex justify-end p-1 pt-3">
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="bg-white/90 text-black border-0 hover:bg-white font-geist text-xs px-2 py-1 h-auto backdrop-blur-sm w-full"
+                      >
+                        Read More
+                      </Button>
+                    </CardFooter>
                   </CardContent>
                 </Card>
               </motion.div>
@@ -280,24 +293,24 @@ export default function InkVisionLanding() {
       </section>
 
       {/* Why Choose Us */}
-      <section className="container mx-auto px-6 lg:px-48 py-16">
+      <section className="container mx-auto px-4 lg:px-24 py-8 lg:py-16 max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-left lg:text-center mb-16"
+          className="text-left lg:text-center mb-8 lg:mb-16"
         >
-          <h2 className="text-4xl lg:text-5xl font-amatic font-bold text-gray-800 mb-6">
+          <h2 className="text-2xl lg:text-5xl font-amatic font-bold text-gray-800 mb-6">
             Why Choose InkVision?
           </h2>
-          <p className="text-xl text-gray-600 font-geist max-w-3xl mx-auto">
+          <p className="text-base lg:text-xl text-gray-600 font-geist max-w-3xl mx-auto">
             The most advanced tattoo visualization platform backed by academic
             research and cutting-edge technology
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
           {[
             {
               emoji: "🎯",
@@ -313,9 +326,9 @@ export default function InkVisionLanding() {
             },
             {
               emoji: "🎨",
-              title: "Massive Design Database",
+              title: "Huge Design Database",
               description:
-                "Access thousands of professionally curated tattoo designs across all styles and themes.",
+                "Access hundreds of professionally curated tattoo designs across all styles and themes.",
             },
             {
               emoji: "🔬",
@@ -342,27 +355,31 @@ export default function InkVisionLanding() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="bg-black text-white p-8 rounded-2xl space-y-4"
+              className="bg-black text-white p-4 lg:p-8 rounded-2xl space-y-3 lg:space-y-4"
             >
-              <div className="text-4xl">{item.emoji}</div>
-              <h3 className="text-xl font-amatic font-bold">{item.title}</h3>
-              <p className="font-geist opacity-90">{item.description}</p>
+              <div className="text-2xl lg:text-4xl">{item.emoji}</div>
+              <h3 className="text-lg lg:text-2xl font-amatic font-bold">
+                {item.title}
+              </h3>
+              <p className="text-sm lg:text-base font-geist opacity-90">
+                {item.description}
+              </p>
             </motion.div>
           ))}
         </div>
 
         {/* Tech Stack */}
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
           viewport={{ once: true }}
-          className="mt-16 bg-black text-white p-8 rounded-2xl"
+          className="mt-8 lg:mt-16 bg-black text-white p-4 lg:p-8 rounded-2xl"
         >
-          <h3 className="text-3xl font-amatic font-bold text-center mb-8">
+          <h3 className="text-xl lg:text-3xl font-amatic font-bold text-center mb-4 lg:mb-8">
             Built with Modern Technology
           </h3>
-          <div className="grid md:grid-cols-3 gap-8 text-center">
+          <div className="grid md:grid-cols-3 gap-4 lg:gap-8 text-center">
             {[
               {
                 emoji: "📱",
@@ -372,172 +389,168 @@ export default function InkVisionLanding() {
               { emoji: "⚙️", title: "Backend", items: ["Convex", "Clerk"] },
               { emoji: "🤖", title: "ML Hosting", items: ["Modal"] },
             ].map((tech, index) => (
-              <div key={index} className="space-y-4">
-                <div className="text-4xl">{tech.emoji}</div>
-                <h4 className="text-xl font-amatic font-bold">{tech.title}</h4>
+              <div key={index} className="space-y-3 lg:space-y-4">
+                <div className="text-2xl lg:text-4xl">{tech.emoji}</div>
+                <h4 className="text-base lg:text-xl font-amatic font-bold">
+                  {tech.title}
+                </h4>
                 <div className="space-y-2 font-geist opacity-90">
                   {tech.items.map((item, itemIndex) => (
-                    <p key={itemIndex}>{item}</p>
+                    <p key={itemIndex} className="text-sm lg:text-base">
+                      {item}
+                    </p>
                   ))}
                 </div>
               </div>
             ))}
           </div>
-        </motion.div>
+        </motion.div> */}
       </section>
 
       {/* Team Section */}
-      <section id="team" className="py-16">
-        <div className="container mx-auto px-6 lg:px-48">
+      <section id="team" className="py-8 lg:py-16">
+        <div className="container mx-auto px-4 lg:px-24 max-w-7xl">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-left lg:text-center mb-16"
+            className="text-left lg:text-center mb-8 lg:mb-16"
           >
-            <h2 className="text-4xl lg:text-5xl font-amatic font-bold text-gray-800 mb-6">
+            <h2 className="text-2xl lg:text-5xl font-amatic font-bold text-gray-800 mb-6">
               Meet Our Team
             </h2>
-            <p className="text-xl text-gray-600 font-geist">
+            <p className="text-base lg:text-xl text-gray-600 font-geist">
               A dedicated team of developers and researchers bringing InkVision
               to life.
             </p>
           </motion.div>
 
-          <div className="space-y-12">
-            <div>
-              <h3 className="text-2xl font-amatic font-bold text-gray-800 text-left lg:text-center mb-8">
-                Development Team
-              </h3>
-              <div
-                className="overflow-x-auto -mx-6 lg:-mx-48"
-                style={{
-                  scrollbarWidth: "none", // Firefox
-                  msOverflowStyle: "none", // IE 10+
-                }}
-              >
-                <style>
-                  {`
+            <div
+              className="overflow-x-auto overflow-y-hidden -mx-4 lg:-mx-0"
+              style={{
+                scrollbarWidth: "none", // Firefox
+                msOverflowStyle: "none", // IE 10+
+              }}
+            >
+              <style>
+                {`
                     /* Hide scrollbar for Chrome, Safari and Opera */
                     .hide-scrollbar::-webkit-scrollbar {
                       display: none;
                     }
                   `}
-                </style>
-                <div
-                  className="flex gap-6 pb-4 px-6 lg:px-48 hide-scrollbar"
-                  style={{ width: "max-content" }}
-                >
-                  {[
-                    {
-                      name: "Eryk Wójcik",
-                      role: "Lead Developer",
-                      image: "https://utfs.io/a/oxjj5brc17/eryk-wojcik.jpg",
-                      portfolio: "https://ewoj.dev",
-                    },
-                    {
-                      name: "Dariusz Palt",
-                      role: "AI Engineer: CV & 3D",
-                      image: "https://utfs.io/a/oxjj5brc17/dariusz-palt.jpg",
-                      portfolio: "https://dariuszpalt.dev",
-                    },
-                    {
-                      name: "Patryk Polkowski",
-                      role: "AI Engineer: 3D ",
-                      image:
-                        "https://utfs.io/a/oxjj5brc17/patryk-polkowski.jpg",
-                      portfolio: "https://patrykpolkowski.dev",
-                    },
-                    {
-                      name: "Bartłomiej Gintowt",
-                      role: "AI Engineer: Diffusion",
-                      image:
-                        "https://utfs.io/a/oxjj5brc17/bartlomiej-gintowt.jpg",
-                      portfolio: "https://bartlomiejgintowt.dev",
-                    },
-                    {
-                      name: "Hanna Kaczmarek",
-                      role: "UI/UX Designer",
-                      image: "https://utfs.io/a/oxjj5brc17/hanna-kaczmarek.jpg",
-                      portfolio: "https://haczmarek.vercel.app/",
-                    },
-                  ].map((member, index) => (
-                    <motion.div
-                      key={member.name}
-                      initial={{ opacity: 0, y: 30 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.6, delay: index * 0.1 }}
-                      viewport={{ once: true }}
+              </style>
+              <div className="flex gap-4 lg:gap-6 pb-4 px-4 lg:px-0 hide-scrollbar min-w-max items-start">
+                {[
+                  {
+                    name: "Eryk Wójcik",
+                    role: "Lead Developer",
+                    image: "https://utfs.io/a/oxjj5brc17/eryk-wojcik.jpg",
+                    portfolio: "https://ewoj.dev",
+                  },
+                  {
+                    name: "Dariusz Palt",
+                    role: "AI Engineer: CV & 3D",
+                    image: "https://utfs.io/a/oxjj5brc17/dariusz-palt.jpg",
+                    portfolio: "https://dariuszpalt.dev",
+                  },
+                  {
+                    name: "Patryk Polkowski",
+                    role: "AI Engineer: 3D ",
+                    image: "https://utfs.io/a/oxjj5brc17/patryk-polkowski.jpg",
+                    portfolio: "https://patrykpolkowski.dev",
+                  },
+                  {
+                    name: "Bartłomiej Gintowt",
+                    role: "AI Engineer: Diffusion",
+                    image:
+                      "https://utfs.io/a/oxjj5brc17/bartlomiej-gintowt.jpg",
+                    portfolio: "https://bartlomiejgintowt.dev",
+                  },
+                  {
+                    name: "Hanna Kaczmarek",
+                    role: "UI/UX Designer",
+                    image: "https://utfs.io/a/oxjj5brc17/hanna-kaczmarek.jpg",
+                    portfolio: "https://haczmarek.vercel.app/",
+                  },
+                ].map((member, index) => (
+                  <motion.div
+                    key={member.name}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                    viewport={{ once: true }}
+                  >
+                    <Card
+                      className="w-48 lg:w-80 h-72 lg:h-auto bg-black text-white border-gray-800 flex-shrink-0 rounded-3xl cursor-pointer hover:bg-gray-900 transition-colors"
+                      onClick={() =>
+                        member.portfolio &&
+                        window.open(member.portfolio, "_blank")
+                      }
                     >
-                      <Card
-                        className="w-48 lg:w-80 bg-black text-white border-gray-800 flex-shrink-0 rounded-3xl cursor-pointer hover:bg-gray-900 transition-colors"
-                        onClick={() =>
-                          member.portfolio &&
-                          window.open(member.portfolio, "_blank")
-                        }
-                      >
-                        <CardContent className="p-3 lg:p-4 text-left space-y-3 lg:space-y-4">
-                          <div className="w-full aspect-square bg-gray-700 rounded-2xl flex items-center justify-center overflow-hidden">
-                            <Image
-                              src={member.image}
-                              alt={member.name}
-                              width={160}
-                              height={160}
-                              className="w-full h-full object-cover"
-                              onError={(e) => {
-                                const target = e.target as HTMLImageElement;
-                                target.style.display = "none";
-                                const fallback =
-                                  target.nextElementSibling as HTMLElement;
-                                if (fallback) fallback.style.display = "flex";
-                              }}
-                            />
-                            <div
-                              className="w-full h-full hidden items-center justify-center"
-                              style={{ display: "none" }}
-                            >
-                              <Users className="h-16 lg:h-20 w-16 lg:w-20 text-gray-400" />
-                            </div>
+                      <CardContent className="p-3 lg:p-4 text-left h-full lg:h-auto flex flex-col lg:space-y-3">
+                        <div className="w-full aspect-square bg-gray-700 rounded-2xl flex items-center justify-center overflow-hidden flex-shrink-0">
+                          <Image
+                            src={member.image}
+                            alt={member.name}
+                            width={160}
+                            height={160}
+                            className="w-full h-full object-cover"
+                            onError={(e) => {
+                              const target = e.target as HTMLImageElement;
+                              target.style.display = "none";
+                              const fallback =
+                                target.nextElementSibling as HTMLElement;
+                              if (fallback) fallback.style.display = "flex";
+                            }}
+                          />
+                          <div
+                            className="w-full h-full hidden items-center justify-center"
+                            style={{ display: "none" }}
+                          >
+                            <Users className="h-16 lg:h-20 w-16 lg:w-20 text-gray-400" />
                           </div>
-                          <div className="space-y-1 lg:space-y-2 py-2">
-                            <h4 className="text-lg lg:text-2xl font-amatic font-bold text-white leading-tight">
-                              {member.name}
-                            </h4>
-                            <p className="text-gray-300 font-geist text-xs lg:text-sm leading-tight">
-                              {member.role}
-                            </p>
-                            {/* {member.portfolio && (
+                        </div>
+                        <div className="flex-1 lg:flex-none flex flex-col justify-center lg:justify-start space-y-1 lg:space-y-2 py-1 lg:py-2 min-h-0">
+                          <h4 className="text-lg lg:text-2xl font-amatic font-bold text-white leading-tight">
+                            {member.name}
+                          </h4>
+                          <p className="text-gray-300 font-geist text-xs lg:text-sm leading-tight">
+                            {member.role}
+                          </p>
+                          {/* {member.portfolio && (
                               <p className="text-gray-400 font-geist text-xs hidden lg:block">
                                 Click to view portfolio →
                               </p>
                             )} */}
-                          </div>
-                        </CardContent>
-                      </Card>
-                    </motion.div>
-                  ))}
-                </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                ))}
               </div>
-            </div>
           </div>
         </div>
       </section>
 
       {/* FAQ Section */}
-      <section id="faq" className="container mx-auto px-6 lg:px-48 py-16">
+      <section
+        id="faq"
+        className="container mx-auto px-4 lg:px-24 py-8 lg:py-16 max-w-4xl"
+      >
         <div className="max-w-3xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-left lg:text-center mb-16"
+            className="text-left lg:text-center mb-8 lg:mb-16"
           >
-            <h2 className="text-4xl lg:text-5xl font-amatic font-bold text-gray-800 mb-6">
+            <h2 className="text-2xl lg:text-5xl font-amatic font-bold text-gray-800 mb-6">
               Frequently Asked Questions
             </h2>
-            <p className="text-xl text-gray-600 font-geist">
+            <p className="text-base lg:text-xl text-gray-600 font-geist">
               Everything you need to know about InkVision.
             </p>
           </motion.div>
@@ -548,7 +561,11 @@ export default function InkVisionLanding() {
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <Accordion type="single" collapsible className="space-y-4">
+            <Accordion
+              type="single"
+              collapsible
+              className="space-y-3 lg:space-y-4"
+            >
               {[
                 {
                   question: "How accurate is the tattoo visualization?",
@@ -582,10 +599,10 @@ export default function InkVisionLanding() {
                   value={`item-${index + 1}`}
                   className="bg-black text-white rounded-lg border border-gray-800"
                 >
-                  <AccordionTrigger className="px-6 py-4 text-left font-amatic text-2xl font-bold text-white hover:text-gray-300">
+                  <AccordionTrigger className="px-6 py-4 text-left font-amatic text-lg lg:text-2xl font-bold text-white hover:text-gray-300">
                     {faq.question}
                   </AccordionTrigger>
-                  <AccordionContent className="px-6 pb-4 font-geist text-gray-300">
+                  <AccordionContent className="px-6 pb-4 font-geist text-sm lg:text-base text-gray-300">
                     {faq.answer}
                   </AccordionContent>
                 </AccordionItem>
@@ -596,16 +613,16 @@ export default function InkVisionLanding() {
       </section>
 
       {/* CTA Section */}
-      <section id="waitlist" className="bg-black text-white py-16">
-        <div className="container mx-auto px-6 lg:px-48">
+      <section id="waitlist" className="bg-black text-white py-8">
+        <div className="container mx-auto px-4 lg:px-48">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="grid lg:grid-cols-2 gap-12 items-center"
+            className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center"
           >
-            <div className="flex justify-center lg:justify-end px-24 order-1 lg:order-2">
+            <div className="flex justify-center lg:justify-end order-1 lg:order-2">
               <Image
                 src="https://utfs.io/a/oxjj5brc17/xNYugo9hq5N2V7NImbDbTctGMj83sUiXKqOSL7DCnroBRwY1"
                 alt="InkVision Logo"
@@ -615,26 +632,26 @@ export default function InkVisionLanding() {
               />
             </div>
 
-            <div className="space-y-8 order-2 lg:order-1">
-              <h2 className="text-4xl lg:text-6xl font-amatic font-bold">
+            <div className="space-y-6 lg:space-y-8 order-2 lg:order-1">
+              <h2 className="text-2xl lg:text-6xl font-amatic font-bold">
                 Ready to See Your Perfect Tattoo?
               </h2>
-              <p className="text-xl font-geist opacity-90">
+              <p className="text-base lg:text-xl font-geist opacity-90">
                 Join thousands of others on the waitlist and be the first to
                 experience the future of tattoo visualization.
               </p>
 
               <div className="max-w-md">
-                <form className="space-y-4">
+                <form className="space-y-3 lg:space-y-4">
                   <Input
                     type="email"
                     placeholder="Enter your email address"
-                    className="bg-white text-black border-0 h-12 text-lg font-geist"
+                    className="bg-white text-black border-0 h-12 text-sm lg:text-base font-geist w-full"
                   />
                   <Button
                     type="submit"
                     size="lg"
-                    className="w-full bg-white text-black hover:bg-gray-100 h-12 text-lg font-geist"
+                    className="w-full bg-white text-black hover:bg-gray-100 h-12 text-sm lg:text-base font-geist"
                   >
                     Get Early Access to InkVision
                   </Button>

@@ -58,10 +58,10 @@ export function FeaturesSection() {
   return (
     <section
       id="features"
-      className="bg-black min-h-screen rounded-3xl mx-2 lg:mx-24 pb-12 lg:px-12"
+      className="bg-black min-h-screen rounded-3xl mx-2 lg:mx-24 pb-8 lg:pb-12"
     >
       {/* Header */}
-      <div className="container mx-auto px-6 pt-16 pb-8 lg:px-12 lg:pt-24 lg:pb-12">
+      <div className="container mx-auto px-4 lg:px-24 pt-8 lg:pt-16 pb-6 lg:pb-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -69,10 +69,10 @@ export function FeaturesSection() {
           transition={{ duration: 0.6 }}
           className="text-center max-w-4xl mx-auto"
         >
-          <h2 className="font-amatic font-bold text-white text-4xl mb-6 lg:text-5xl xl:text-6xl">
+          <h2 className="font-amatic font-bold text-white text-2xl lg:text-5xl mb-6">
             How InkVision Works?
           </h2>
-          <p className="text-gray-300 font-geist text-lg lg:text-xl leading-relaxed">
+          <p className="text-gray-300 font-geist text-base lg:text-xl leading-relaxed">
             Huge database of tattoo designs. Browse interesting styles, create
             moodboards of favorite tattoos - discover! Effective pattern search
             thanks to automatic extraction of style, theme and tattoo objects.
@@ -81,7 +81,7 @@ export function FeaturesSection() {
       </div>
 
       {/* Features Grid */}
-      <div className="container mx-auto px-6 lg:px-12">
+      <div className="container mx-auto px-4 lg:px-24">
         {features.map((feature, index) => (
           <FeatureItem key={feature.id} feature={feature} index={index} />
         ))}
@@ -106,7 +106,7 @@ function FeatureItem({
       viewport={{ once: true, margin: "-20%" }}
       transition={{ duration: 0.8, delay: index * 0.2 }}
       className={`
-        mb-12 last:mb-0 lg:mb-16
+        mb-8 lg:mb-12 last:mb-0
         grid grid-cols-1 gap-6 
         lg:grid-cols-2 lg:gap-12 lg:items-center
         ${index % 2 === 1 ? "lg:grid-flow-col-dense" : ""}
@@ -147,7 +147,7 @@ function FeatureItem({
       `}
       >
         <motion.h3
-          className="font-amatic font-bold text-white text-2xl lg:text-4xl xl:text-5xl"
+          className="font-amatic font-bold text-white text-xl lg:text-3xl"
           initial={{ opacity: 0, x: index % 2 === 1 ? 20 : -20 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}

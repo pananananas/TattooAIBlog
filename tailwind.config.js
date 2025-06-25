@@ -1,4 +1,3 @@
-
 const config = {
   darkMode: ["class"],
   content: [
@@ -60,8 +59,18 @@ const config = {
         sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
-        amatic: ["var(--font-amatic)", "cursive"],
-        geist: ["var(--font-geist)", "monospace"],
+        amatic: ["var(--font-amatic)", "Amatic SC", "cursive"],
+        geist: [
+          "var(--font-geist-mono)", 
+          "Geist Mono", 
+          "SF Mono", 
+          "Monaco", 
+          "Inconsolata", 
+          "Roboto Mono", 
+          "Courier New", 
+          "monospace"
+        ],
+        sans: ["var(--font-geist-sans)", "Geist", "system-ui", "sans-serif"],
       },
       keyframes: {
         "accordion-down": {
@@ -80,6 +89,6 @@ const config = {
     },
   },
   plugins: [require("tailwindcss-animate")],
-}
+};
 
-export default config
+export default config;
