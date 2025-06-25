@@ -151,20 +151,11 @@ export default function InkVisionLanding() {
               {
                 title: "Beyond the Uncanny Valley",
                 excerpt:
-                  "Explore how parametric models are revolutionizing 3D avatars - Why this is the right diraction for tattoo visualization.",
+                "Explore how parametric models are revolutionizing 3D avatars - Why this is the right diraction for tattoo visualization.",
                 image:
-                  "https://utfs.io/a/oxjj5brc17/xNYugo9hq5N2bMEPVrKnNmTE5LR1ofd6r2JMpah4lUgISy03",
+                "https://utfs.io/a/oxjj5brc17/xNYugo9hq5N2bMEPVrKnNmTE5LR1ofd6r2JMpah4lUgISy03",
                 category: "3D AI",
                 slug: "parametric-models",
-              },
-              {
-                title: "Where am I?",
-                excerpt:
-                  "We built a method of Multi-View Diffusion with comparable results to SoTA, but 4x faster.",
-                image:
-                  "https://utfs.io/a/oxjj5brc17/xNYugo9hq5N2vO2g1pT7dNVFw8oSOluz9TbHIB5itJ3yjmea",
-                category: "Image -> 3D",
-                slug: "multiview",
               },
               {
                 title: "Tattoo Overlay on Human Skin",
@@ -174,6 +165,24 @@ export default function InkVisionLanding() {
                   "https://utfs.io/a/oxjj5brc17/xNYugo9hq5N2TElBznFQpBwYfiEI6AgFcVZSbjG8HeUkdNRP",
                 category: "Generative AI",
                 slug: "inpainting",
+              },
+              {
+                title: "Efficient Multi-View Diffusion",
+                excerpt:
+                "We built a method of Multi-View Diffusion with comparable results to SoTA, but 4x faster training through efficient adapter-based conditioning.",
+                image:
+                "https://utfs.io/a/oxjj5brc17/xNYugo9hq5N2vO2g1pT7dNVFw8oSOluz9TbHIB5itJ3yjmea",
+                category: "Generative AI",
+                slug: "multiview",
+              },
+              {
+                title: "Making a 3D avatar from a single image",
+                excerpt:
+                  "We put 4 state-of-the-art AI models to the test: Human3Diffusion, SIFU, LHM, and InstantMesh. Discover which tool is right for your specific 3D creation needs.",
+                image:
+                  "https://utfs.io/a/oxjj5brc17/xNYugo9hq5N27IaY54xSFx0ceOsPGpuw7f4lW5mRv9a2BJbZ",
+                category: "3D Reconstruction",
+                slug: "avatars-3d",
               },
               {
                 title: "Trends in Tattoo Styles",
@@ -390,31 +399,31 @@ export default function InkVisionLanding() {
                 {
                   name: "Eryk Wójcik",
                   role: "Lead Developer",
-                  image: "https://utfs.io/a/oxjj5brc17/eryk-wojcik.jpg",
+                  image: "https://utfs.io/a/oxjj5brc17/xNYugo9hq5N25OngliDa293pjEAanQOIe4FulXgwSz0Gvr8s",
                   portfolio: "https://ewoj.dev",
                 },
                 {
                   name: "Dariusz Palt",
                   role: "AI Engineer: CV & 3D",
-                  image: "https://utfs.io/a/oxjj5brc17/dariusz-palt.jpg",
+                  image: "https://utfs.io/a/oxjj5brc17/xNYugo9hq5N2W9WS1xmc0kAa4M8uzG9ZTifQmNe3sFow7dLX",
                   portfolio: "https://dariuszpalt.dev",
                 },
                 {
                   name: "Patryk Polkowski",
                   role: "AI Engineer: 3D ",
-                  image: "https://utfs.io/a/oxjj5brc17/patryk-polkowski.jpg",
+                  image: "https://utfs.io/a/oxjj5brc17/xNYugo9hq5N2G5ZWVV4G9ioa2bnI8wXQKkdztyuLNAhxfZrm",
                   portfolio: "https://patrykpolkowski.dev",
                 },
                 {
                   name: "Bartłomiej Gintowt",
                   role: "AI Engineer: Diffusion",
-                  image: "https://utfs.io/a/oxjj5brc17/bartlomiej-gintowt.jpg",
+                  image: "https://utfs.io/a/oxjj5brc17/xNYugo9hq5N2NS7DDo53ZjAaJmlBFytHbuf6KQ40e82xSOhV",
                   portfolio: "https://bartlomiejgintowt.dev",
                 },
                 {
                   name: "Hanna Kaczmarek",
                   role: "UI/UX Designer",
-                  image: "https://utfs.io/a/oxjj5brc17/hanna-kaczmarek.jpg",
+                  image: "https://utfs.io/a/oxjj5brc17/xNYugo9hq5N2HgAqDEKJjlWzPtbysdAhN8O3RiIKYwBxk6cE",
                   portfolio: "https://haczmarek.vercel.app/",
                 },
               ].map((member, index) => (

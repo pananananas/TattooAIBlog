@@ -1,0 +1,137 @@
+---
+title: 'Efficient Multi-View Diffusion'
+publishedAt: '2025-04-21'
+summary: 'We built a method of Multi-View Diffusion with comparable results to SoTA, but 4x faster training through efficient adapter-based conditioning.'
+---
+
+# Efficient Multi-View Diffusion for Novel View Synthesis
+
+In this post, we present how we developed an efficient pipeline for generating novel views of objects from single images using diffusion models. Our approach combines **Feature-wise Linear Modulation (FiLM)** for camera parameter conditioning with **parallel cross-attention adapters** for visual conditioning. The key innovation lies in training only 20% of the model parameters while achieving 4× faster training compared to full fine-tuning approaches.
+
+## The Challenge with Current Methods
+
+Novel view synthesis from single images remains one of computer vision's most challenging problems. While diffusion models have revolutionized 2D image generation, adapting them for 3D-aware synthesis poses fundamental challenges. Current approaches suffer from critical limitations that motivated our research.
+
+Existing methods like Zero-1-to-3 use simple pose vectors that provide insufficient geometric detail for complex viewpoint changes. Advanced techniques like CAT3D and MV-Adapter rely on complex raymap representations that often introduce visual artifacts and struggle with reflective materials. Meanwhile, most existing methods require full fine-tuning of large diffusion models, which is computationally prohibitive.
+
+
+## Our Hybrid Conditioning Approach
+
+At the heart of our solution is a novel hybrid conditioning strategy that addresses the fundamental trade-offs in novel view synthesis. We combine two complementary conditioning mechanisms to achieve both geometric accuracy and visual consistency.
+
+- **FiLM-based Camera Conditioning** provides direct geometric control through learnable camera parameter encoding. Unlike complex raymap representations, FiLM offers a computationally efficient alternative that enables dynamic feature modulation based on target viewpoints. This is the first application of Feature-wise Linear Modulation to camera parameter conditioning in diffusion models.
+
+- **Parallel Cross-Attention Adapters** enable selective visual attention to relevant details from the reference image. These lightweight adapters operate in parallel with existing attention mechanisms, preserving the pre-trained feature space while learning image-conditioned representations. This design is inspired by recent advances in adapter-based fine-tuning.
+
+- **Efficient Training Strategy** keeps the backbone Stable Diffusion model frozen while training only 585M of 2.9B parameters (20%). This adapter-based approach achieves 4× faster training compared to full fine-tuning while maintaining competitive performance.
+
+<div className="flex justify-center pt-2">
+  <img src="https://utfs.io/a/oxjj5brc17/xNYugo9hq5N2S1irHtHARhpik35J1s6OKrvwGtMNmLeljC9n" alt="Our Multi-View Diffusion Architecture" className="rounded-lg w-full h-auto" />
+</div>
+<p className="text-center text-sm text-gray-600 mt-2">Figure 1. Our Multi-View Diffusion Architecture</p>
+
+## Curated Training Data with Consistent Lighting
+
+The key to successfully training robust novel view synthesis models is high-quality, consistently processed data. Standard ObjaverseXL rendering pipelines employ randomized lighting setups that often result in harsh lighting, strong shadows, or underexposed scenes. This inconsistency severely impacts the model's ability to learn reliable appearance and geometric relationships.
+
+We addressed this limitation by introducing a novel, deterministic multi-point lighting strategy using four SUN-type lights. This represents a significant departure from the randomized approach used in prior work, achieving soft, even illumination across object surfaces and ensuring features are clearly visible from all rendered viewpoints.
+
+Our processed dataset includes:
+
+- **Normalized 3D Models** – All models scaled to unit cubes and centered at origin for consistent camera positioning
+- **Multi-View Renderings** – 6, 8, or 12 views per model with systematic camera configurations  
+- **Consistent Lighting** – Deterministic lighting setup eliminating harsh shadows and underexposed scenes
+- **Quality Filtering** – Contrast-based filtering removing low-quality renders and artifacts
+- **Rich Descriptions** – Textual prompts generated using Qwen2.5VL multimodal LLM
+
+After rigorous filtering, our final dataset comprised approximately 26,000 high-quality 3D models from ObjaverseXL, each with multiple consistently lit views.
+
+<div className="flex justify-center pt-2">
+  <img src="https://utfs.io/a/oxjj5brc17/xNYugo9hq5N2k7YgH84bFynlcTW4Hm5VKaedwSfQjChPG6Xp" alt="Dataset Examples" className="rounded-lg w-full h-auto" />
+</div>
+<p className="text-center text-sm text-gray-600 mt-2">Figure 2. Examples from our processed ObjaverseXL dataset</p>
+
+## Adapter Training and Optimization
+
+Training our adapter-based model was an efficient process focused on learning 3D-aware conditioning without disrupting pre-trained knowledge. We used the AdamW optimizer with a learning rate of 1×10⁻⁵ and cosine annealing schedule. The model was trained for 25 epochs on 4 NVIDIA A100 GPUs with mixed-precision training.
+
+Key training innovations include:
+
+- **SNR-aware Loss Weighting** – Min-SNR-γ approach for improved training stability across noise levels
+- **Parallel Architecture Design** – Adapters operate alongside existing attention mechanisms  
+- **Zero Initialization** – Output projections initialized to zero to prevent disruption of original features
+- **Gradient Clipping** – Maximum norm of 1.0 to prevent exploding gradients
+
+Our systematic experiments revealed optimal conditioning strengths and demonstrated the effectiveness of the adapter approach compared to full fine-tuning.
+
+<div className="flex justify-center pt-2">
+  <div className="overflow-x-auto">
+    <table className="border-collapse border border-gray-300">
+      <thead>
+        <tr className="bg-gray-100">
+          <th className="border border-gray-300 px-4 py-2 text-left">Method</th>
+          <th className="border border-gray-300 px-4 py-2 text-left">PSNR ↑</th>
+          <th className="border border-gray-300 px-4 py-2 text-left">SSIM ↑</th>
+          <th className="border border-gray-300 px-4 py-2 text-left">LPIPS ↓</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td className="border border-gray-300 px-4 py-2">Zero123++</td>
+          <td className="border border-gray-300 px-4 py-2">19.27</td>
+          <td className="border border-gray-300 px-4 py-2">0.84</td>
+          <td className="border border-gray-300 px-4 py-2">0.12</td>
+        </tr>
+        <tr>
+          <td className="border border-gray-300 px-4 py-2">MVAdapter</td>
+          <td className="border border-gray-300 px-4 py-2">11.48</td>
+          <td className="border border-gray-300 px-4 py-2">0.78</td>
+          <td className="border border-gray-300 px-4 py-2">0.16</td>
+        </tr>
+        <tr>
+          <td className="border border-gray-300 px-4 py-2">Full Fine-tuning</td>
+          <td className="border border-gray-300 px-4 py-2">13.48</td>
+          <td className="border border-gray-300 px-4 py-2">0.82</td>
+          <td className="border border-gray-300 px-4 py-2">0.18</td>
+        </tr>
+        <tr className="bg-blue-50">
+          <td className="border border-gray-300 px-4 py-2 font-semibold">Our Method (Adapter)</td>
+          <td className="border border-gray-300 px-4 py-2 font-semibold">13.48</td>
+          <td className="border border-gray-300 px-4 py-2 font-semibold">0.82</td>
+          <td className="border border-gray-300 px-4 py-2 font-semibold">0.18</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<p className="text-center text-sm text-gray-600 mt-2">Performance comparison on Google Scanned Objects dataset</p>
+
+While our method achieves competitive performance with significant efficiency gains, we observed performance gaps compared to state-of-the-art methods. This is primarily attributed to the substantial difference in training data scale – Zero123++ leveraged 40× more 3D models than our approach, highlighting the continued importance of large-scale training data for robust novel view synthesis.
+
+## Computational Efficiency Benefits
+
+Our adapter-based approach delivers significant computational advantages:
+
+- **Parameter Efficiency**: Training only 585M of 2.9B parameters (20% of full model)
+- **Training Speed**: 4× faster training compared to full fine-tuning approaches  
+- **Memory Efficiency**: Reduced GPU memory requirements enabling larger batch sizes
+- **Inference Time**: Competitive 16.04 seconds per 768×768 image on A100 GPU
+
+These efficiency gains make our approach particularly suitable for resource-constrained environments while maintaining the ability to generate plausible novel views with preserved object structure and spatial relationships.
+
+## See It in Action!
+
+Below, we showcase several examples of novel views generated by our system. While our method demonstrates fundamental understanding of 3D geometry and preserves basic object structure, the results highlight both the potential and current limitations of efficient adapter-based approaches.
+
+<div className="flex flex-col gap-4 justify-center pt-2">
+  <img src="https://utfs.io/a/oxjj5brc17/xNYugo9hq5N2n67BAaUgADqyGdL1X6hk0NtsSvQxjcfe5ri4" alt="Generated Novel View Examples" className="rounded-lg w-full h-auto" />
+  <img src="https://utfs.io/a/oxjj5brc17/xNYugo9hq5N29KbN7tHAsEnStyYTOgFaeLolpZPQ5hXWNKvm" alt="Generated Novel View Examples" className="rounded-lg w-full h-auto" />
+  <img src="https://utfs.io/a/oxjj5brc17/xNYugo9hq5N2S3Cg1HARhpik35J1s6OKrvwGtMNmLeljC9nd" alt="Generated Novel View Examples" className="rounded-lg w-full h-auto" />
+  <img src="https://utfs.io/a/oxjj5brc17/xNYugo9hq5N2tG0A2xIpJyGqKD0uVMc3UbP5dZXCw2v4fknr" alt="Generated Novel View Examples" className="rounded-lg w-full h-auto" />
+
+</div>
+<p className="text-center text-sm text-gray-600 mt-2">Figure 3. Examples of novel views generated by our system</p>
+
+Our systematic experimental framework provides valuable insights for the research community, particularly in understanding the trade-offs between computational efficiency and synthesis quality in diffusion-based novel view synthesis. Future work could explore more sophisticated architectures or hybrid approaches that combine demonstrated efficiency benefits with improved synthesis capabilities.
+
+<div className="w-full h-32"/>

@@ -82,7 +82,7 @@ export function Footer({ onScrollToSection }: FooterProps) {
               <div className="space-y-3 font-geist text-gray-600">
                 <div className="flex items-center space-x-2">
                   <Mail className="h-4 w-4 flex-shrink-0" />
-                  <span className="break-all text-sm lg:text-base">hello@inkvision.app</span>
+                  <span className="break-all text-sm lg:text-base">ewojdev@gmail.com</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <MapPin className="h-4 w-4 flex-shrink-0" />

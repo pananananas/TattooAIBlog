@@ -15,13 +15,18 @@ export function BlogPosts() {
       },
       multiview: {
         image:
-          "https://utfs.io/a/oxjj5brc17/xNYugo9hq5N2vO2g1pT7dNVFw8oSOluz9TbHIB5itJ3yjmea",
+          "https://utfs.io/a/oxjj5brc17/xNYugo9hq5N2k7YgH84bFynlcTW4Hm5VKaedwSfQjChPG6Xp",
         category: "Generative AI",
       },
       inpainting: {
         image:
           "https://utfs.io/a/oxjj5brc17/xNYugo9hq5N2TElBznFQpBwYfiEI6AgFcVZSbjG8HeUkdNRP",
         category: "Generative AI",
+      },
+      "avatars-3d": {
+        image:
+          "https://utfs.io/a/oxjj5brc17/xNYugo9hq5N27IaY54xSFx0ceOsPGpuw7f4lW5mRv9a2BJbZ",
+        category: "3D Reconstruction",
       },
       tattoo: {
         image:
@@ -60,7 +65,7 @@ export function BlogPosts() {
                         src={blogData.image}
                         alt={post.metadata.title}
                         fill
-                        className="object-cover"
+                        className="object-cover rounded-xl"
                       />
                       {/* Category Badge */}
                       <div className="absolute top-4 left-4">
