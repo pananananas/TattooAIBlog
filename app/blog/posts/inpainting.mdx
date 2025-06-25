@@ -1,0 +1,131 @@
+---
+title: 'Diffusion-based Tattoo Visualization'
+publishedAt: '2025-06-05'
+summary: 'In this post, we present how we developed a pipeline for realistic tattoo application on photos of human bodies using generative models from the Flux family. Our approach is based on Flux.1 Fill dev as the primary diffusion model and Flux.1 Redux as the style adapter. The pipeline is further enhanced by our custom LoRA adapter, trained on a carefully curated dataset created in collaboration with professional tattoo artists.'
+---
+
+# Tattoo Overlay on Human Skin Using Flux Generative Models
+
+In this post, we present how we developed a pipeline for realistic tattoo application on photos of human bodies using generative models from the **Flux** family. Our approach is based on **Flux.1 Fill dev** as the primary diffusion model and **Flux.1 Redux** as the style adapter. The pipeline is further enhanced by our custom **LoRA adapter**, trained on a carefully curated dataset created in collaboration with professional tattoo artists.
+
+## Why Flux?
+
+Choosing the right generative model was a crucial stage in our project. The market offers many advanced solutions that allow for conditioning with reference images. Among the most popular are solutions based on Stable Diffusion. SDXL with IP-Adapter, or Paint-by-Example, offer broad capabilities in image generation and editing. However, they aren't perfect.
+
+For the specific task of applying tattoos, which demands both high fidelity to the design and seamless blending into skin texture, these models perform poorly.
+
+<div className="space-y-8 py-8">
+  <div className="text-center">
+    <img src="https://utfs.io/a/oxjj5brc17/xNYugo9hq5N2TElBznFQpBwYfiEI6AgFcVZSbjG8HeUkdNRP" alt="Original Tattoo Design" className="rounded-lg w-full h-auto mx-auto mb-2" />
+    <p className="text-sm text-gray-600">Original Tattoo Design</p>
+  </div>
+  <div className="text-center">
+    <img src="https://utfs.io/a/oxjj5brc17/xNYugo9hq5N2TElBznFQpBwYfiEI6AgFcVZSbjG8HeUkdNRP" alt="SDXL Result" className="rounded-lg w-full h-auto mx-auto mb-2" />
+    <p className="text-sm text-gray-600">SDXL Result</p>
+  </div>
+  <div className="text-center">
+    <img src="https://utfs.io/a/oxjj5brc17/xNYugo9hq5N2TElBznFQpBwYfiEI6AgFcVZSbjG8HeUkdNRP" alt="Paint-by-Example Result" className="rounded-lg w-full h-auto mx-auto mb-2" />
+    <p className="text-sm text-gray-600">Paint-by-Example Result</p>
+  </div>
+</div>
+
+## Our Approach
+
+At the heart of our solution are the innovative Flux family models. We use a two-stage approach to ensure both realistic tattoo stylization and its precise placement and blending into the target image.
+
+- **Flux.1 Redux** plays a key role in style adaptation. Its main task is to encode features from the reference image (the tattoo design) into a latent space. Even though we don't use it entirely for direct generation, its feature extraction mechanism ensures the generated tattoo will be visually consistent with the original design, preserving its characteristic details, textures, and shadows.
+
+- **Flux.1 Fill dev** is our primary model responsible for the diffusion process. It's the one that actually generates the tattoo onto the target image, seamlessly and realistically blending it into the human skin's texture. The Fill dev model is controlled by embeddings obtained from the Redux model, allowing us to precisely guide the generation based on the provided tattoo design.
+
+- **LoRA** is our custom adapter, a crucial element that enabled us to tailor the powerful Flux models for the specific task of tattoo application. LoRA modifies the weights of the Fill dev model at lower layers, allowing for precise adjustment of its behavior. This leads to better and more realistic tattoo generation on human skin, taking into account aspects like perspective, lighting, and body surface deformations.
+
+<div className="flex justify-center py-8">
+  <img src="https://utfs.io/a/oxjj5brc17/xNYugo9hq5N2TElBznFQpBwYfiEI6AgFcVZSbjG8HeUkdNRP" alt="Our Pipeline Architecture" className="rounded-lg w-full h-auto" />
+</div>
+<p className="text-center text-sm text-gray-600 mt-2">Figure 1. Our Pipeline Architecture</p>
+
+## Custom Dataset
+
+The key to successfully fine-tuning generative models is a high-quality, specialized dataset. Recognizing the lack of publicly available datasets specifically designed for realistic tattoo application, we decided to create our own. We collaborated with experienced tattoo artists to gather a diverse collection of tattoo designs and human body photographs featuring perfectly applied patterns. We managed to collect 120 high-quality image sets.
+
+Our dataset includes:
+
+- **Base Images** – Photos of people with blurred out tattoos, digitally altered to represent clean skin before tattooing.
+
+- **Reference Images** – Pictures used as references during generation. These sketches and drawings were provided by professional tattoo studios.
+
+- **Masks** – Indicate the precise location on the image where the tattoo design should be generated.
+
+- **Ground Truth Images** –  Photographs of people with the tattoos already applied, also provided by tattoo studios.
+
+Here are some examples from our dataset:
+
+<div className="flex justify-center py-8">
+  <img src="https://utfs.io/a/oxjj5brc17/xNYugo9hq5N2TElBznFQpBwYfiEI6AgFcVZSbjG8HeUkdNRP" alt="Dataset Examples" className="rounded-lg w-full h-auto" />
+</div>
+<p className="text-center text-sm text-gray-600 mt-2">Figure 2. Examples from our custom dataset</p>
+
+<div className="flex justify-center py-8">
+  <img src="https://utfs.io/a/oxjj5brc17/xNYugo9hq5N2TElBznFQpBwYfiEI6AgFcVZSbjG8HeUkdNRP" alt="Dataset" className="rounded-lg w-full h-auto" />
+</div>
+
+## LoRA Training
+
+Training the LoRA adapter was an iterative process, aiming to perfectly adapt the Flux.1 Fill dev model for our task. We used our custom dataset to teach LoRA the subtle nuances of realistically blending tattoos into skin. The training process involved optimizing parameters like learning rate, number of epochs, and adapter weight to achieve the best results in terms of photorealism and consistency. Thanks to its lightweight nature, LoRA allowed for efficient training without needing to modify the entire Flux model. Only about 2% of the network was trained, which significantly cut down on the time and computational resources required.
+
+So, how did we stack up against other solutions?
+
+<div className="flex justify-center py-4">
+  <div className="overflow-x-auto">
+    <table className="border-collapse border border-gray-300">
+      <thead>
+        <tr className="bg-gray-100">
+          <th className="border border-gray-300 px-4 py-2 text-left">Model</th>
+          <th className="border border-gray-300 px-4 py-2 text-left">LIPIS ↓</th>
+          <th className="border border-gray-300 px-4 py-2 text-left">CLIP Score ↑</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td className="border border-gray-300 px-4 py-2">SDXL</td>
+          <td className="border border-gray-300 px-4 py-2">0.2315</td>
+          <td className="border border-gray-300 px-4 py-2">0.8398</td>
+        </tr>
+        <tr>
+          <td className="border border-gray-300 px-4 py-2">Paint-by-Example</td>
+          <td className="border border-gray-300 px-4 py-2">0.2034</td>
+          <td className="border border-gray-300 px-4 py-2">0.8534</td>
+        </tr>
+        <tr>
+          <td className="border border-gray-300 px-4 py-2">Flux</td>
+          <td className="border border-gray-300 px-4 py-2">0.1827</td>
+          <td className="border border-gray-300 px-4 py-2">0.8881</td>
+        </tr>
+        <tr>
+          <td className="border border-gray-300 px-4 py-2">ACE++</td>
+          <td className="border border-gray-300 px-4 py-2">0.1841</td>
+          <td className="border border-gray-300 px-4 py-2">0.9110</td>
+        </tr>
+        <tr className="bg-blue-50">
+          <td className="border border-gray-300 px-4 py-2 font-semibold">Flux + LoRA (our)</td>
+          <td className="border border-gray-300 px-4 py-2 font-semibold">0.1525</td>
+          <td className="border border-gray-300 px-4 py-2 font-semibold">0.9370</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<p className="text-center text-sm text-gray-600 mt-2">Performance comparison on our test dataset</p>
+
+On the test set developed in collaboration with tattoo artists, our solution delivered the best results. The outcomes are significantly better in terms of both visual quality and semantic consistency.
+
+## See It in Action!
+
+Below, we're excited to showcase several examples of generated tattoos, demonstrating the impressive capabilities of our system. Pay close attention to the realism, how naturally they conform to body contours, and their seamless integration with skin texture.
+
+<div className="flex justify-center py-8">
+  <img src="https://utfs.io/a/oxjj5brc17/xNYugo9hq5N2U8tmUUQ71W92QZfjDqrskTKxa4vpPtB86LHz" alt="Generated Tattoo Examples" className="rounded-lg w-full h-auto" />
+</div>
+<p className="text-center text-sm text-gray-600 mt-2">Figure 3. Examples of tattoos generated by our system</p>
+
+<div className="w-full h-32"/>
