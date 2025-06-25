@@ -25,8 +25,6 @@ export default function InkVisionLanding() {
 
   return (
     <div className=" bg-cream/99">
-
-
       {/* Hero Section */}
       <div id="hero">
         <HeroSection onScrollToSection={scrollToSection} />

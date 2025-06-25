@@ -84,7 +84,7 @@ export default function Navbar() {
     }
 
     const offsetTop = element.getBoundingClientRect().top;
-    const scrollOffset = 60;
+    const scrollOffset = 1;
     const offsetPosition = offsetTop + window.pageYOffset - scrollOffset;
 
     window.scrollTo({
@@ -122,17 +122,17 @@ export default function Navbar() {
     <nav className="mb-16 tracking-tight">
       <div className="fixed left-0 right-0 top-0 z-50 flex flex-col items-center justify-center">
         <div
-          className="from-20 pointer-events-none absolute inset-0 bg-gradient-to-b from-[#fefdf9] via-[#fefdf9]/30 transition-opacity duration-700 ease-in-out"
+          className="from-20 pointer-events-none absolute inset-0 bg-gradient-to-b from-[#f0f0e6] via-[#f0f0e6]/85 transition-opacity duration-700 ease-in-out"
           style={{ opacity: showGradient ? 1 : 0 }}
         />
 
-        <div className="container relative z-10 mx-auto w-full p-6 px-6 md:px-20 xl:px-44">
+        <div className="container relative z-10 mx-auto w-full pt-6 px-6 md:px-20 xl:px-44">
           <div
             className={cn(
               "flex items-center justify-between rounded-[20px] border px-3 py-2 transition-all duration-700 ease-in-out",
               showGradient
-                ? "border-gray-200 bg-[#fefdf9]/90 backdrop-blur-sm"
-                : "border-transparent bg-[#fefdf9]/90 backdrop-blur-sm",
+                ? "border-gray-200 bg-[#f0f0e6]/90 backdrop-blur-sm"
+                : "border-transparent bg-[#f0f0e6]/90 backdrop-blur-sm",
             )}
           >
             <button
@@ -222,7 +222,7 @@ export default function Navbar() {
                     ease: "easeInOut",
                   }}
                 >
-                  <div className="pointer-events-none absolute inset-0 rounded-md bg-[#fefdf9]/95 backdrop-blur-sm" />
+                  <div className="pointer-events-none absolute inset-0 rounded-md bg-[#f0f0e6]/95 backdrop-blur-sm" />
 
                   <div className="relative z-10 flex flex-col px-4 py-4">
                     {navItems.map((item, i) => (

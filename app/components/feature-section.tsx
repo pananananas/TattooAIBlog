@@ -58,7 +58,7 @@ export function FeaturesSection() {
   return (
     <section
       id="features"
-      className="bg-black min-h-screen rounded-3xl mx-2 lg:mx-24 pb-8 lg:pb-12"
+      className="bg-black min-h-screen rounded-3xl mx-2 lg:mx-44 pb-8 lg:pb-12"
     >
       {/* Header */}
       <div className="container mx-auto px-4 lg:px-24 pt-8 lg:pt-16 pb-6 lg:pb-8">

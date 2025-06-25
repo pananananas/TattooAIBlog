@@ -14,9 +14,10 @@ export const metadata: Metadata = {
   title: "InkVision - Visualize Tattoos on Your Skin",
   description:
     "Explore thousands of tattoo designs, create moodboards, and visualize how tattoos will look on your skin before making the commitment",
-  openGraph: {  
+  openGraph: {
     title: "InkVision - Visualize Tattoos on Your Skin",
-    description: "Explore thousands of tattoo designs, create moodboards, and visualize how tattoos will look on your skin before making the commitment",
+    description:
+      "Explore thousands of tattoo designs, create moodboards, and visualize how tattoos will look on your skin before making the commitment",
     url: baseUrl,
     siteName: "InkVision",
     locale: "en_US",
@@ -49,11 +50,11 @@ const cx = (...classes) => classes.filter(Boolean).join(" ");
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
-    <html 
-      lang="en" 
+    <html
+      lang="en"
       className={cx(
         "bg-cream/99",
         GeistSans.variable,
@@ -75,7 +76,7 @@ export default function RootLayout({
           href="https://utfs.io/a/oxjj5brc17/xNYugo9hq5N2ibOzW4e0zBWo1nIYFrOc7txGqpKdim0Cu9Pe"
           fetchPriority="high"
         />
-        
+
         {/* Preload fonts for Safari compatibility */}
         <link
           rel="preload"
@@ -93,13 +94,13 @@ export default function RootLayout({
         />
       </head>
       <CSPostHogProvider>
-      <body className="antialiased">
-        <Navbar />
-        {children}
-        <SpeedInsights />
-        <Toaster />
+        <body className="antialiased">
+          <Navbar />
+          {children}
+          <SpeedInsights />
+          <Toaster />
         </body>
       </CSPostHogProvider>
     </html>
-  )
+  );
 }
