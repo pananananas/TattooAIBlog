@@ -17,8 +17,87 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "./components/ui/accordion";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { useState } from "react";
+import { toast } from "sonner";
+import * as z from "zod";
+import {
+  Form,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+  FormControl,
+} from "./components/ui/form";
+import { usePostHog } from "posthog-js/react";
+
+const formSchema = z.object({
+  name: z
+    .string()
+    .min(3, { message: "Name must be at least 3 characters" })
+    .max(50, { message: "Name must not exceed 50 characters" }),
+  email: z
+    .string()
+    .email({ message: "Please enter a valid email address" })
+    .min(5, { message: "Email must be at least 5 characters" })
+    .max(100, { message: "Email must not exceed 100 characters" }),
+});
+
+type FormValues = z.infer<typeof formSchema>;
+
+const GOOGLE_SCRIPT_URL = process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL;
 
 export default function InkVisionLanding() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const posthog = usePostHog();
+
+  const form = useForm<FormValues>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+    },
+  });
+
+  if (!GOOGLE_SCRIPT_URL) {
+    throw new Error(
+      "Google Script URL is not defined in environment variables"
+    );
+  }
+
+  const onSubmit = async (data: FormValues) => {
+    setIsSubmitting(true);
+
+    try {
+      posthog.capture(`subscribe_begin`, {
+        name: data.name,
+        email: data.email,
+      });
+
+      const response = await fetch(GOOGLE_SCRIPT_URL, {
+        method: "POST",
+        mode: "no-cors", // Important for Google Apps Script
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      // Show success message
+      toast("Thank you for subscribing!");
+
+      // Reset the form
+      form.reset();
+    } catch (error) {
+      toast(
+        "An error occurred while submitting the form. Please try again later."
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   const scrollToSection = (sectionId: string) => {
     document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" });
   };
@@ -618,20 +697,54 @@ export default function InkVisionLanding() {
               </p>
 
               <div className="max-w-md">
-                <form className="space-y-3 lg:space-y-4">
-                  <Input
-                    type="email"
-                    placeholder="Enter your email address"
-                    className="bg-white text-black border-0 h-12 text-sm lg:text-base font-geist w-full"
-                  />
-                  <Button
-                    type="submit"
-                    size="lg"
-                    className="w-full bg-white text-black hover:bg-gray-100 h-12 text-sm lg:text-base font-geist"
-                  >
-                    Get Early Access to InkVision
-                  </Button>
-                </form>
+                <Form {...form}>
+                  <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-0 lg:space-y-1">
+                    <FormField
+                      control={form.control}
+                      name="name"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel className="text-white font-geist">Name</FormLabel>
+                          <FormControl>
+                            <Input 
+                              placeholder="Your name" 
+                              {...field} 
+                              className="bg-white text-black border-0 h-12 text-sm lg:text-base font-geist w-full"
+                            />
+                          </FormControl>
+                          <FormMessage className="text-red-300" />
+                        </FormItem>
+                      )}
+                    />
+
+                    <FormField
+                      control={form.control}
+                      name="email"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel className="text-white font-geist">Email</FormLabel>
+                          <FormControl>
+                            <Input 
+                              placeholder="your.email@example.com" 
+                              {...field} 
+                              className="bg-white text-black border-0 h-12 text-sm lg:text-base font-geist w-full"
+                            />
+                          </FormControl>
+                          <FormMessage className="text-red-300" />
+                        </FormItem>
+                      )}
+                    />
+
+                    <Button
+                      type="submit"
+                      size="lg"
+                      disabled={isSubmitting}
+                      className="w-full bg-white mt-6 text-black hover:bg-gray-100 h-12 text-sm lg:text-base font-geist"
+                    >
+                      {isSubmitting ? "Submitting..." : "Get Early Access to InkVision"}
+                    </Button>
+                  </form>
+                </Form>
                 <p className="text-sm opacity-70 mt-4 font-geist">
                   No spam, just updates on our launch.
                 </p>
