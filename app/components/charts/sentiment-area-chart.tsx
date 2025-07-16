@@ -82,7 +82,7 @@ export default function StyleSentimentAreaChart() {
         <select
           value={selectedStyle}
           onChange={handleStyleChange}
-          className="w-[110px] sm:w-[180px] rounded-md border border-zinc-300 dark:border-zinc-900 bg-zinc-100/85 dark:bg-zinc-950/85 px-2 py-2 text-sm ring-offset-background focus:outline-none focus:ring-black focus:ring-ring focus:ring-offset-2"
+          className="w-[110px] sm:w-[180px] rounded-md border border-zinc-300 bg-zinc-100/85 px-2 py-2 text-sm ring-offset-background focus:outline-none focus:ring-black focus:ring-ring focus:ring-offset-2"
         >
           {Object.entries(chartConfig).map(([key, config]) => (
             <option key={key} value={key}>
